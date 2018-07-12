@@ -27,7 +27,7 @@ public class CreateActivity extends AppCompatActivity {
     private DatabaseReference myRef1;
     private DatabaseReference myRef2;
     private String s1 = "", s2 = "", s3 = "";
-    private int i, x;
+    private int i, x, a = 0;
     private boolean next = true;
 
     private class BunkServer {
@@ -69,12 +69,14 @@ public class CreateActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (!next) {
-                        x = i;
+                        x = a - 1;
                         Log.d("TAG", "Value of x is: " + x);
                         return;
                     }
+
                     String value = dataSnapshot.getValue(String.class);
                     Log.d("TAG", "Value is: " + value);
+                    ++a;
                     if(value == null) {
                         next = false;
                         Log.d("TAG", "next is false now");
@@ -86,14 +88,16 @@ public class CreateActivity extends AppCompatActivity {
                     Log.w("TAG", "Failed to read value.", error.toException());
                 }
             });
+            Log.d("TAG", "Break at i: " + i);
             /*if(!next) {
                 Log.d("TAG", "Break at i: " + i);
                 break;
             }*/
         }
-        myRef0 = database.getReference(s1);
-        myRef1 = database.getReference(s2);
-        myRef2 = database.getReference(s3);
+        myRef0 = database.getReference("bunk" + a + "name");
+        myRef1 = database.getReference("bunk" + a + "date");
+        myRef2 = database.getReference("bunk" + a + "num");
+        Log.d("TAG", "Value of a is: " + a);
     }
 
     public void onCreateButtonClicked(View view) {
