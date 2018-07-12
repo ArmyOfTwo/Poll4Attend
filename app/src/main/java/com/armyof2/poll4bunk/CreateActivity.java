@@ -121,16 +121,16 @@ public class CreateActivity extends AppCompatActivity {
         myRef2.setValue(bnum);
     }
 
-    public DatabaseReference getRef0(DatabaseReference a){
-        return a;
+    public DatabaseReference getRef0(){
+        return myRef0;
     }
 
-    public DatabaseReference getRef1(DatabaseReference b){
-        return b;
+    public DatabaseReference getRef1(){
+        return myRef1;
     }
 
-    public DatabaseReference getRef2(DatabaseReference c){
-        return c;
+    public DatabaseReference getRef2(){
+        return myRef2;
     }
 }
 

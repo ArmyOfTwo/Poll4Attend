@@ -14,8 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+
 
 public class LaunchActivity extends AppCompatActivity {
 
@@ -27,6 +26,7 @@ public class LaunchActivity extends AppCompatActivity {
     private DatabaseReference myRef1;
     private DatabaseReference myRef2;
     private String bunkName;
+    CreateActivity createactivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +34,12 @@ public class LaunchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_launch);
 
         pollName = (EditText) findViewById(R.id.et_pollname);
+        createactivity = new CreateActivity();
 
         database = FirebaseDatabase.getInstance();
-        myRef0 = database.getReference("bname");
-        myRef1 = database.getReference("bdate");
-        myRef2 = database.getReference("bnum");
+        myRef0 = createactivity.getRef0();
+        myRef1 = createactivity.getRef1();
+        myRef2 = createactivity.getRef2();
     }
 
     public void onJoinButtonClicked(View view) {
