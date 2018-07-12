@@ -21,8 +21,9 @@ public class CreateActivity extends AppCompatActivity{
     private EditText bunkNum;
     private Intent intent;
     private FirebaseDatabase database;
-    private DatabaseReference myRef;
-
+    private DatabaseReference myRef0;
+    private DatabaseReference myRef1;
+    private DatabaseReference myRef2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +37,26 @@ public class CreateActivity extends AppCompatActivity{
         bunkNum = (EditText) findViewById(R.id.et_numofparti);
         intent = new Intent(this, LaunchActivity.class);
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("message");
+        myRef0 = database.getReference("bname");
+        myRef1 = database.getReference("bdate");
+        myRef2 = database.getReference("bnum");
     }
 
     public void onCreateButtonClicked(View view) {
         String bname, bdate;
         int bnum;
         bname = bunkName.getText().toString();
-        bdate = (bunkDate0.getText().toString() + bunkDate1.getText().toString() + bunkDate2.getText().toString());
+        bdate = (bunkDate0.getText().toString() +"-"+ bunkDate1.getText().toString() +"-"+ bunkDate2.getText().toString());
         bnum = Integer.parseInt(bunkNum.getText().toString());
-        makeFile();
-        myRef.setValue("Hello, World!");
+        makeFile(bname, bdate, bnum);
+
 
         startActivity(intent);
     }
 
-    public void makeFile() {
-
+    public void makeFile(String bname, String bdate, int bnum) {
+        myRef0.setValue(bname);
+        myRef1.setValue(bdate);
+        myRef2.setValue(bnum);
     }
 }
