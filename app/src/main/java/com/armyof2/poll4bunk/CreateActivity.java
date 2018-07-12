@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -18,8 +20,8 @@ public class CreateActivity extends AppCompatActivity{
     private EditText bunkDate2;
     private EditText bunkNum;
     Intent intent;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
 
     @Override
@@ -33,8 +35,8 @@ public class CreateActivity extends AppCompatActivity{
         bunkDate2 = (EditText) findViewById(R.id.et_date2);
         bunkNum = (EditText) findViewById(R.id.et_numofparti);
         intent = new Intent(this, LaunchActivity.class);
-        mStorageRef = FirebaseStorage.getInstance().getReference();
-
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("message");
     }
 
     public void onCreateButtonClicked(View view) {
@@ -44,6 +46,7 @@ public class CreateActivity extends AppCompatActivity{
         bdate = (bunkDate0.getText().toString() + bunkDate1.getText().toString() + bunkDate2.getText().toString());
         bnum = Integer.parseInt(bunkNum.getText().toString());
         makeFile();
+        myRef.setValue("Hello, World!");
         startActivity(intent);
     }
 
