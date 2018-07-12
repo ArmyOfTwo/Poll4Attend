@@ -26,6 +26,7 @@ public class LaunchActivity extends AppCompatActivity {
     private DatabaseReference myRef0;
     private DatabaseReference myRef1;
     private DatabaseReference myRef2;
+    private String bunkName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +42,10 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     public void onJoinButtonClicked(View view) {
-        String poll;
-        poll = pollName.getText().toString();
-        if(poll.equals(""))
-            Toast.makeText(this, "Poll Server name cannot be empty", Toast.LENGTH_SHORT).show();
+        String serverName;
+        serverName = pollName.getText().toString();
+        if(serverName.equals(""))
+            Toast.makeText(this, "Server name cannot be empty", Toast.LENGTH_SHORT).show();
 
         // Read from the database
         myRef0.addValueEventListener(new ValueEventListener() {
@@ -54,6 +55,7 @@ public class LaunchActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 String value = dataSnapshot.getValue(String.class);
                 Log.d("TAG", "Value is: " + value);
+                bunkName = value;
             }
 
             @Override

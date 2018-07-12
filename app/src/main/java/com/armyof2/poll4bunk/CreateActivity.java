@@ -1,6 +1,5 @@
 package com.armyof2.poll4bunk;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -114,9 +113,24 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     public void makeFile(String bname, String bdate, int bnum) {
+        myRef0 = database.getReference("bunk" + x + "name");
+        myRef1 = database.getReference("bunk" + x + "date");
+        myRef2 = database.getReference("bunk" + x + "num");
         myRef0.setValue(bname);
         myRef1.setValue(bdate);
         myRef2.setValue(bnum);
+    }
+
+    public DatabaseReference getRef0(DatabaseReference a){
+        return a;
+    }
+
+    public DatabaseReference getRef1(DatabaseReference b){
+        return b;
+    }
+
+    public DatabaseReference getRef2(DatabaseReference c){
+        return c;
     }
 }
 
