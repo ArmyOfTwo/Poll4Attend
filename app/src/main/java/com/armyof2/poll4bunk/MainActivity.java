@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         key = keyText.getText().toString();
 
         //Analyze and Authenticate the key
-        if(key==)
 
 
         //send the option to server
