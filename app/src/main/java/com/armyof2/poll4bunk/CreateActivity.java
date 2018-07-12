@@ -19,9 +19,9 @@ public class CreateActivity extends AppCompatActivity{
     private EditText bunkDate1;
     private EditText bunkDate2;
     private EditText bunkNum;
-    Intent intent;
-    FirebaseDatabase database;
-    DatabaseReference myRef;
+    private Intent intent;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
 
 
     @Override
@@ -47,6 +47,7 @@ public class CreateActivity extends AppCompatActivity{
         bnum = Integer.parseInt(bunkNum.getText().toString());
         makeFile();
         myRef.setValue("Hello, World!");
+
         startActivity(intent);
     }
 
