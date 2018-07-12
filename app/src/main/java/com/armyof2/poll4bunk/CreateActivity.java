@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 public class CreateActivity extends AppCompatActivity{
 
     private EditText bunkName;
@@ -15,6 +18,8 @@ public class CreateActivity extends AppCompatActivity{
     private EditText bunkDate2;
     private EditText bunkNum;
     Intent intent;
+    private StorageReference mStorageRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,8 @@ public class CreateActivity extends AppCompatActivity{
         bunkDate2 = (EditText) findViewById(R.id.et_date2);
         bunkNum = (EditText) findViewById(R.id.et_numofparti);
         intent = new Intent(this, LaunchActivity.class);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
+
     }
 
     public void onCreateButtonClicked(View view) {
@@ -35,6 +42,11 @@ public class CreateActivity extends AppCompatActivity{
         bname = bunkName.getText().toString();
         bdate = (bunkDate0.getText().toString() + bunkDate1.getText().toString() + bunkDate2.getText().toString());
         bnum = Integer.parseInt(bunkNum.getText().toString());
+        makeFile();
         startActivity(intent);
+    }
+
+    public void makeFile() {
+
     }
 }

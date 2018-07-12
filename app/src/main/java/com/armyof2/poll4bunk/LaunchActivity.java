@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 public class LaunchActivity extends AppCompatActivity {
 
     private EditText pollName;
     private Intent intent;
+    private StorageReference mStorageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,7 @@ public class LaunchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_launch);
 
         pollName = (EditText) findViewById(R.id.et_pollname);
+        mStorageRef = FirebaseStorage.getInstance().getReference();
     }
 
     public void onJoinButtonClicked(View view) {
