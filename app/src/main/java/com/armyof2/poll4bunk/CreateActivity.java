@@ -101,6 +101,10 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     public void onCreateButtonClicked(View view) {
+        myRef0 = database.getReference("bunk" + a + "name");
+        myRef1 = database.getReference("bunk" + a + "date");
+        myRef2 = database.getReference("bunk" + a + "num");
+
         bunk[x].name = bunkName.getText().toString();
         bunk[x].date = (bunkDate0.getText().toString() + "-" + bunkDate1.getText().toString() + "-" + bunkDate2.getText().toString());
         bunk[x].num = Integer.parseInt(bunkNum.getText().toString());
