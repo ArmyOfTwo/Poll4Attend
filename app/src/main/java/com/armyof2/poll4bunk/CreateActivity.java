@@ -18,7 +18,8 @@ public class CreateActivity extends AppCompatActivity{
     private EditText bunkDate2;
     private EditText bunkNum;
     Intent intent;
-    private StorageReference mStorageRef;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("message");
 
 
     @Override
