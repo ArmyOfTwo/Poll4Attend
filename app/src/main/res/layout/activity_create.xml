@@ -1,65 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
 
     <EditText
         android:id="@+id/et_numofparti"
+        android:digits="0123456789"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tv_numofparti"
         android:layout_alignBottom="@+id/tv_numofparti"
-        android:layout_alignStart="@+id/et_date1"
-        android:layout_marginEnd="10sp"
-        android:layout_marginStart="12dp"
+        android:layout_alignEnd="@+id/et_pollname"
+        android:layout_alignStart="@+id/et_pollname"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/tv_numofparti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tv_date"
-        android:layout_below="@+id/et_date0"
-        android:layout_marginTop="43dp"
+        android:layout_below="@+id/et_date"
+        android:layout_marginTop="60sp"
         android:text="Enter Number of Participants:"
         android:textSize="19sp" />
 
     <EditText
-        android:id="@+id/et_date2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/et_date1"
-        android:layout_alignBottom="@+id/et_date1"
-        android:layout_alignEnd="@+id/tv_title"
-        android:layout_marginEnd="0sp"
-        android:layout_marginStart="330sp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/et_date1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/et_date0"
-        android:layout_alignBottom="@+id/et_date0"
-        android:layout_alignStart="@+id/et_date0"
-        android:layout_marginEnd="69sp"
-        android:layout_marginStart="59sp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/et_date0"
+        android:id="@+id/et_date"
+        android:focusable="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tv_date"
         android:layout_alignBottom="@+id/tv_date"
+        android:layout_alignEnd="@+id/et_pollname"
         android:layout_alignStart="@+id/et_pollname"
-        android:layout_marginEnd="128sp"
-        android:layout_marginRight="40sp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="date" />
 
     <TextView
         android:id="@+id/tv_date"
@@ -67,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tv_pollname"
         android:layout_below="@+id/et_pollname"
-        android:layout_marginTop="45sp"
+        android:layout_marginTop="60sp"
         android:text="Enter Date of Bunk:"
         android:textSize="19sp" />
 
@@ -77,19 +55,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="30sp"
         android:text="Create Poll4Bunk Server:"
         android:textColor="@android:color/holo_green_light"
-        android:textSize="33sp" />
+        android:textSize="34sp" />
 
     <TextView
         android:id="@+id/tv_pollname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tv_title"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/tv_title"
-        android:layout_marginLeft="5sp"
-        android:layout_marginTop="80sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginTop="100sp"
         android:text="Enter Title of Bunk:"
         android:textSize="19sp" />
 
@@ -99,10 +77,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tv_pollname"
         android:layout_alignBottom="@+id/tv_pollname"
-        android:layout_marginEnd="10sp"
+        android:layout_marginLeft="35sp"
         android:layout_marginRight="10sp"
-        android:layout_marginStart="14dp"
-        android:layout_toEndOf="@+id/tv_pollname"
+        android:layout_toEndOf="@+id/tv_numofparti"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -113,8 +90,18 @@
         android:layout_below="@+id/et_numofparti"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="170sp"
-        android:layout_marginTop="77dp"
+        android:layout_marginTop="100sp"
         android:onClick="onCreateButtonClicked"
         android:text="CREATE"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_pollname"
+        android:layout_below="@+id/tv_pollname"
+        android:text="[This will serve as server identifier too, so keep it unique]"
+        android:textColor="@android:color/holo_purple"
+        android:textSize="10sp" />
 </RelativeLayout>

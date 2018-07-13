@@ -9,11 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 
 public class LaunchActivity extends AppCompatActivity {
@@ -22,12 +19,9 @@ public class LaunchActivity extends AppCompatActivity {
     private Intent intent;
 
     private FirebaseDatabase database;
-    private DatabaseReference myRef0;
-    private DatabaseReference myRef1;
-    private DatabaseReference myRef2;
+    private DatabaseReference myRef;
     private String serverName, bunkName;
-    private String s1 = "", s2 = "", s3 = "";
-    private int i, x, a = 0, y;
+
     private boolean flag = false;
 
 
@@ -40,7 +34,7 @@ public class LaunchActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
 
-        myRef0 = database.getReference();
+        myRef = database.getReference();
 
     }
 
@@ -52,7 +46,7 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     public void onCreateButtonClicked(View view) {
-        intent = new Intent(this, CreateActivity2.class);
+        intent = new Intent(this, CreateActivity.class);
         startActivity(intent);
     }
 

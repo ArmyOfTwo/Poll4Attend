@@ -1,11 +1,19 @@
 package com.armyof2.poll4bunk;
 
+
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,29 +21,30 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class CreateActivity extends AppCompatActivity {
+import java.util.Calendar;
+import java.util.HashMap;
 
+import static com.armyof2.poll4bunk.SignInActivity.userUid;
+
+public class CreateActivity extends FragmentActivity {
+
+    static EditText bunkDate;
     private EditText bunkName;
-    private EditText bunkDate0;
-    private EditText bunkDate1;
-    private EditText bunkDate2;
     private EditText bunkNum;
     private Intent intent;
     private FirebaseDatabase database;
-    public static DatabaseReference myRef0;
-    public static DatabaseReference myRef1;
-    public static DatabaseReference myRef2;
-    private String s1 = "", s2 = "", s3 = "";
-    private int i, x, a = 0;
-    private boolean next = true;
+    public static DatabaseReference myRef;
+    private HashMap<String, String> dataMap;
+    private DialogInterface.OnClickListener dialogClickListener;
+    private boolean serverExists = false;
 
     private class BunkServer {
         String name;
         String date;
-        int num;
+        String num;
     }
 
-    BunkServer[] bunk;
+    BunkServer bunk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,83 +52,111 @@ public class CreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create);
 
         bunkName = (EditText) findViewById(R.id.et_pollname);
-        bunkDate0 = (EditText) findViewById(R.id.et_date0);
-        bunkDate1 = (EditText) findViewById(R.id.et_date1);
-        bunkDate2 = (EditText) findViewById(R.id.et_date2);
+        bunkDate = (EditText) findViewById(R.id.et_date);
+        bunkDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog(v);
+            }
+        });
         bunkNum = (EditText) findViewById(R.id.et_numofparti);
         intent = new Intent(this, LaunchActivity.class);
-        bunk = new BunkServer[50];
+        bunk = new BunkServer();
         database = FirebaseDatabase.getInstance();
+        myRef = database.getReference();
 
-        for (i = 0; i < 50; i++) {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild(userUid))
+                    serverExists = true;
+            }
 
-            bunk[i] = new BunkServer();
-            s1 = "bunk" + i + "name";
-            s2 = "bunk" + i + "date";
-            s3 = "bunk" + i + "num";
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w("TAG", "Failed to read value.", error.toException());
+            }
+        });
 
-            //Get from database
-            myRef0 = database.getReference(s1);
-            myRef1 = database.getReference(s2);
-            myRef2 = database.getReference(s3);
+        //Create yes / no dialog box
+        dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        myRef.child(userUid).setValue(dataMap);
+                        startActivity(intent);
+                        break;
 
-            // Read from the database
-            myRef0.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    if (!next) {
-                        x = a - 1;
-                        Log.d("TAG", "Value of x is: " + x);
-                        return;
-                    }
-
-                    String value = dataSnapshot.getValue(String.class);
-                    Log.d("TAG", "Value is: " + value);
-                    ++a;
-                    if(value == null) {
-                        next = false;
-                        Log.d("TAG", "next is false now");
-                    }
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        startActivity(intent);
+                        //No button clicked
+                        break;
                 }
+            }
+        };
+    }
 
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    Log.w("TAG", "Failed to read value.", error.toException());
-                }
-            });
-            Log.d("TAG", "Break at i: " + i);
-            /*if(!next) {
-                Log.d("TAG", "Break at i: " + i);
-                break;
-            }*/
+    public void showDatePickerDialog(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    public static class DatePickerFragment extends DialogFragment implements
+            DatePickerDialog.OnDateSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current date as the default date in the picker
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            // Create a new instance of DatePickerDialog and return it
+            return new DatePickerDialog(getActivity(), this, year, month, day);
         }
-        myRef0 = database.getReference("bunk" + a + "name");
-        myRef1 = database.getReference("bunk" + a + "date");
-        myRef2 = database.getReference("bunk" + a + "num");
-        Log.d("TAG", "Value of a is: " + a);
+
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            // Do something with the date chosen by the user
+            bunkDate.setText(day + "/" + (month + 1) + "/" + year);
+        }
     }
 
     public void onCreateButtonClicked(View view) {
-        myRef0 = database.getReference("bunk" + a + "name");
-        myRef1 = database.getReference("bunk" + a + "date");
-        myRef2 = database.getReference("bunk" + a + "num");
+        bunk.name = bunkName.getText().toString();
+        bunk.date = bunkDate.getText().toString();
+        bunk.num = bunkNum.getText().toString();
 
-        bunk[x].name = bunkName.getText().toString();
-        bunk[x].date = (bunkDate0.getText().toString() + "-" + bunkDate1.getText().toString() + "-" + bunkDate2.getText().toString());
-        bunk[x].num = Integer.parseInt(bunkNum.getText().toString());
-        makeFile(bunk[x].name, bunk[x].date, bunk[x].num);
-        //start
-        startActivity(intent);
+        if(bunk.name.equals("")){
+            Toast.makeText(this, "You forgot to input title!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(bunk.date.equals("")){
+            Toast.makeText(this, "You forgot to input date!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(bunk.num.equals("")){
+            Toast.makeText(this, "You forgot to input participants!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        dataMap = new HashMap<String, String>();
+        dataMap.put("Bunk Title", bunk.name);
+        dataMap.put("Bunk Date", bunk.date);
+        dataMap.put("Bunk Participants", bunk.num);
+
+        if (!serverExists) {
+            myRef.child(userUid).setValue(dataMap);
+            Log.d("TAG", "If exec");
+            startActivity(intent);
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            builder.setMessage("You have already created a server before, Overwrite?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
+            Log.d("TAG", "Else exec");
+        }
     }
-
-    public void makeFile(String bname, String bdate, int bnum) {
-        myRef0 = database.getReference("bunk" + x + "name");
-        myRef1 = database.getReference("bunk" + x + "date");
-        myRef2 = database.getReference("bunk" + x + "num");
-        myRef0.setValue(bname);
-        myRef1.setValue(bdate);
-        myRef2.setValue(bnum);
-    }
-
 }
 
