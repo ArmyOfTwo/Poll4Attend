@@ -9,20 +9,22 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class LaunchActivity extends AppCompatActivity {
 
+    public static String SERVER_ID;
     private EditText pollName;
     private Intent intent;
-
     private FirebaseDatabase database;
     private DatabaseReference myRef;
-    private String serverName, bunkName;
-
-    private boolean flag = false;
+    private String serverName, strOut, strFinal[];
+    int i = 0;
 
 
     @Override
@@ -33,16 +35,33 @@ public class LaunchActivity extends AppCompatActivity {
         pollName = (EditText) findViewById(R.id.et_pollname);
 
         database = FirebaseDatabase.getInstance();
-
         myRef = database.getReference();
-
     }
 
     public void onJoinButtonClicked(View view) {
         serverName = pollName.getText().toString();
+        intent = new Intent(this, MainActivity.class);
 
-        if(!flag)
-            Toast.makeText(this, "Server does not exist!", Toast.LENGTH_SHORT).show();
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    Log.d("TAG", "Child = " + child.getValue().toString());
+                    strOut = child.getValue().toString().substring(12);
+                    strFinal = strOut.split(",");
+                    Log.d("TAG", "strFinal = " + strFinal[0]);
+                    if(strFinal[0].equals(serverName)){
+                        goodToast();
+                        SERVER_ID = child.getKey();
+                        Log.d("TAG", "SERVER_ID = " + SERVER_ID);
+                        startActivity(intent);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     public void onCreateButtonClicked(View view) {
@@ -50,8 +69,7 @@ public class LaunchActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void getServerNum(){
-        int serverNum = Integer.parseInt(String.valueOf(bunkName.charAt(4)));
-        Log.d("TAG", "ServerNum = " + serverNum);
+    public void goodToast(){
+        Toast.makeText(this, "Server joined!", Toast.LENGTH_SHORT).show();
     }
 }
