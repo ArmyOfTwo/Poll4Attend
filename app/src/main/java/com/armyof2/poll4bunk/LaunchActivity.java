@@ -25,8 +25,11 @@ public class LaunchActivity extends AppCompatActivity {
     private DatabaseReference myRef0;
     private DatabaseReference myRef1;
     private DatabaseReference myRef2;
-    private String bunkName;
-    CreateActivity createactivity;
+    private String serverName, bunkName;
+    private String s1 = "", s2 = "", s3 = "";
+    private int i, x, a = 0, y;
+    private boolean flag = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,43 +37,24 @@ public class LaunchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_launch);
 
         pollName = (EditText) findViewById(R.id.et_pollname);
-        createactivity = new CreateActivity();
 
         database = FirebaseDatabase.getInstance();
-        myRef0 = createactivity.getRef0();
-        myRef1 = createactivity.getRef1();
-        myRef2 = createactivity.getRef2();
     }
 
     public void onJoinButtonClicked(View view) {
-        String serverName;
         serverName = pollName.getText().toString();
-        if(serverName.equals(""))
-            Toast.makeText(this, "Server name cannot be empty", Toast.LENGTH_SHORT).show();
 
-        // Read from the database
-        myRef0.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d("TAG", "Value is: " + value);
-                bunkName = value;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("TAG", "Failed to read value.", error.toException());
-            }
-        });
-        //compare poll with server poll
-
+        if(!flag)
+            Toast.makeText(this, "Server does not exist!", Toast.LENGTH_SHORT).show();
     }
 
     public void onCreateButtonClicked(View view) {
         intent = new Intent(this, CreateActivity.class);
         startActivity(intent);
+    }
+
+    public void getServerNum(){
+        int serverNum = Integer.parseInt(String.valueOf(bunkName.charAt(4)));
+        Log.d("TAG", "ServerNum = " + serverNum);
     }
 }

@@ -34,7 +34,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="70sp"
         android:layout_marginRight="70sp"
-        android:layout_marginTop="114dp"
+        android:layout_marginTop="140dp"
         android:onClick="onJoinButtonClicked"
         android:text="JOIN"
         android:textSize="20sp" />
@@ -49,8 +49,8 @@
         android:layout_marginRight="20sp"
         android:layout_marginTop="46dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter Name of Polling Server" />
+        android:hint="Enter Name of Server..."
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/tv_or"

@@ -22,9 +22,9 @@ public class CreateActivity extends AppCompatActivity {
     private EditText bunkNum;
     private Intent intent;
     private FirebaseDatabase database;
-    private DatabaseReference myRef0;
-    private DatabaseReference myRef1;
-    private DatabaseReference myRef2;
+    public static DatabaseReference myRef0;
+    public static DatabaseReference myRef1;
+    public static DatabaseReference myRef2;
     private String s1 = "", s2 = "", s3 = "";
     private int i, x, a = 0;
     private boolean next = true;
@@ -121,16 +121,5 @@ public class CreateActivity extends AppCompatActivity {
         myRef2.setValue(bnum);
     }
 
-    public DatabaseReference getRef0(){
-        return myRef0;
-    }
-
-    public DatabaseReference getRef1(){
-        return myRef1;
-    }
-
-    public DatabaseReference getRef2(){
-        return myRef2;
-    }
 }
 
