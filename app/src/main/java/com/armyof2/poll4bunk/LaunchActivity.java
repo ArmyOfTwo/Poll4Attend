@@ -39,6 +39,9 @@ public class LaunchActivity extends AppCompatActivity {
         pollName = (EditText) findViewById(R.id.et_pollname);
 
         database = FirebaseDatabase.getInstance();
+
+        myRef0 = database.getReference();
+
     }
 
     public void onJoinButtonClicked(View view) {
@@ -49,7 +52,7 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     public void onCreateButtonClicked(View view) {
-        intent = new Intent(this, CreateActivity.class);
+        intent = new Intent(this, CreateActivity2.class);
         startActivity(intent);
     }
 

@@ -13,7 +13,7 @@
         </activity>
         <activity android:name=".LaunchActivity">
         </activity>
-        <activity android:name=".CreateActivity">
+        <activity android:name=".CreateActivity2">
         </activity>
         <activity android:name=".SignInActivity">
             <intent-filter>
