@@ -5,8 +5,10 @@ android {
         config {
             keyAlias 'armyof2keys'
             keyPassword 'Deadwomansfood'
-            storeFile file('C:/Users/FEAR/FinalAppsKeys/keystore7.jks')
+            storeFile file('C:/Users/Lakshay/App Keys/keystore7.jks')
             storePassword 'Deadmansfood'
+        }
+        config1 {
         }
     }
     compileSdkVersion 26

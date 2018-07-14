@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         myRef2 = database.getReference().child(SERVER_ID).child("YuserUIDs");
 
         myRef.child("Yes");
-        myRef.child("Ye");
+        myRef.child("No");
         myRef.child("Yes80");
         myRef.child("Undec");
 
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                         i = value;
                         Log.d("TAG", "i = " + i);
                     }
-                    if (dataSnapshot.getKey().equals("Ye"))
+                    if (dataSnapshot.getKey().equals("No"))
                         j = value;
                     if (dataSnapshot.getKey().equals("Yes80"))
                         k = value;
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     bunkServerVotes.add(value);
                     if (dataSnapshot.getKey().equals("Yes"))
                         i = value;
-                    if (dataSnapshot.getKey().equals("Ye"))
+                    if (dataSnapshot.getKey().equals("No"))
                         j = value;
                     if (dataSnapshot.getKey().equals("Yes80"))
                         k = value;
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
                 if(hasVoted.equals("yes")) {
                     break;
                 } else if(hasVoted.equals("no")){
-                    myRef.child("Ye").setValue(Integer.toString(q));
+                    myRef.child("No").setValue(Integer.toString(q));
                 } else if(hasVoted.equals("yes80")){
                     myRef.child("Yes80").setValue(Integer.toString(r));
                 } else if(hasVoted.equals("undec")){
@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if(hasVoted.equals("undec")){
                     myRef.child("Undec").setValue(Integer.toString(s));
                 }
-                myRef.child("Ye").setValue(Integer.toString(q));
+                myRef.child("No").setValue(Integer.toString(q));
                 myRef.child("YuserUIDs").child(userUid).setValue("no");
                 hasVoted = "no";
                 break;
@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
                 if(hasVoted.equals("yes80")) {
                     break;
                 } else if(hasVoted.equals("no")){
-                    myRef.child("Ye").setValue(Integer.toString(q));
+                    myRef.child("No").setValue(Integer.toString(q));
                 } else if(hasVoted.equals("yes")){
                     myRef.child("Yes").setValue(Integer.toString(p));
                 } else if(hasVoted.equals("undec")){
@@ -277,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
                 if(hasVoted.equals("undec")) {
                     break;
                 } else if(hasVoted.equals("no")){
-                    myRef.child("Ye").setValue(Integer.toString(q));
+                    myRef.child("No").setValue(Integer.toString(q));
                 } else if(hasVoted.equals("yes80")){
                     myRef.child("Yes80").setValue(Integer.toString(r));
                 } else if(hasVoted.equals("yes")){

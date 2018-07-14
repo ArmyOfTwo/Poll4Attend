@@ -46,10 +46,16 @@ public class LaunchActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Log.d("TAG", "Child = " + child.getValue().toString());
-                    strOut = child.getValue().toString().substring(12);
-                    strFinal = strOut.split(",");
-                    Log.d("TAG", "strFinal = " + strFinal[0]);
-                    if(strFinal[0].equals(serverName)){
+                    // child
+                    strOut = child.getValue().toString();
+
+
+                    String Title="";
+                    int pos=strOut.indexOf("Bunk Title");
+                    Title= strOut.substring(pos+11).split(",")[0];
+                    Log.d("TAG", "Title = " + Title);
+                    if(Title.equals(serverName)){
+
                         goodToast();
                         SERVER_ID = child.getKey();
                         Log.d("TAG", "SERVER_ID = " + SERVER_ID);
