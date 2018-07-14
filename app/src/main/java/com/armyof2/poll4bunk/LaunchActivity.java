@@ -24,7 +24,6 @@ public class LaunchActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private String serverName, strOut, strFinal[];
-    int i = 0;
 
 
     @Override

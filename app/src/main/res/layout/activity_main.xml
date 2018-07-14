@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tv_title"
-        android:layout_marginLeft="10sp"
+        android:layout_marginLeft="20sp"
         android:layout_marginRight="10sp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="270sp"
         android:text="Would you like to participate in Mass Bunk on:  "
-        android:textSize="27sp" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -25,92 +25,104 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp"
+        android:shadowColor="@color/colorAccent"
         android:text="Mass Bunk!!"
         android:textColor="@android:color/holo_red_dark"
-        android:textSize="35sp" />
+        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tv_quest"
-        android:layout_alignEnd="@+id/tv_quest"
-        android:layout_marginBottom="3sp"
-        android:layout_marginEnd="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginRight="40sp"
         android:text="$date"
-        android:textSize="20sp" />
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="24sp" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radioGroup2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30sp"
-        android:layout_marginTop="140sp"
-        android:onClick="onRadioButtonClicked"
-        android:orientation="vertical">
+        android:layout_below="@+id/tv_date"
+        android:layout_marginTop="30dp">
 
-        <RadioButton
-            android:id="@+id/rad_op1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tv_quest"
-            android:layout_below="@+id/tv_quest"
-            android:layout_marginTop="42dp"
-            android:text="Yes! Count me in!"
-            android:textSize="14sp" />
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <RadioButton
-            android:id="@+id/rad_op2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/rad_op1"
-            android:layout_below="@+id/rad_op1"
-            android:layout_marginTop="35dp"
-            android:text="Nope, cuz I'm 'that' guy/girl."
-            android:textSize="14sp" />
+            <RadioButton
+                android:id="@+id/rad_op1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_quest"
+                android:layout_below="@+id/tv_quest"
+                android:layout_marginLeft="30dp"
+                android:text="Yes! Count me in!"
+                android:textSize="14sp" />
 
-        <RadioButton
-            android:id="@+id/rad_op3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/rad_op2"
-            android:layout_below="@+id/rad_op2"
-            android:layout_marginTop="33dp"
-            android:text="Yes.. if 80% or more are in.."
-            android:textSize="14sp" />
+            <RadioButton
+                android:id="@+id/rad_op2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/rad_op1"
+                android:layout_alignBottom="@+id/rad_op1"
+                android:layout_alignEnd="@+id/tv_quest"
+                android:layout_marginLeft="63dp"
+                android:text="No, not interested"
+                android:textSize="14sp" />
 
-        <RadioButton
-            android:id="@+id/rad_op4"
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/rad_op3"
-            android:layout_below="@+id/rad_op3"
-            android:layout_marginTop="35sp"
-            android:text="Not decided yet.. I'm a slowpoke."
-            android:textSize="14sp" />
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RadioButton
+                android:id="@+id/rad_op3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/rad_op1"
+                android:layout_below="@+id/rad_op1"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Yes.. if 80% or more are in"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rad_op4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/rad_op3"
+                android:layout_alignBottom="@+id/rad_op3"
+                android:layout_alignStart="@+id/rad_op2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Not decided yet"
+                android:textSize="14sp" />
+
+        </LinearLayout>
 
     </RadioGroup>
+
 
     <Button
         android:id="@+id/butt_sendop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/tv_quest"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="10sp"
+        android:layout_alignStart="@+id/tv_quest"
+        android:layout_below="@+id/radioGroup2"
+        android:layout_marginBottom="20sp"
+        android:layout_marginTop="50sp"
         android:onClick="onConfirmButtonClicked"
         android:text="Confirm"
         android:textSize="17sp" />
-
-    <EditText
-        android:id="@+id/et_key"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/butt_sendop"
-        android:layout_alignStart="@+id/tv_quest"
-        android:layout_marginLeft="9sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter Unique Key Here" />
 
 </RelativeLayout>
