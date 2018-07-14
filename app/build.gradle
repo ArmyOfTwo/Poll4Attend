@@ -3,9 +3,9 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'armyof2keys'
+            keyAlias 'armyof2key'
             keyPassword 'Deadwomansfood'
-            storeFile file('C:/Users/Lakshay/App Keys/keystore7.jks')
+            storeFile file('C:/Users/Lakshay/App Keys/keystorage.jks')
             storePassword 'Deadmansfood'
         }
         config1 {
@@ -30,6 +30,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    //Pie Chart Library
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
