@@ -7,6 +7,14 @@
     tools:context="com.armyof2.poll4bunk.MainActivity">
 
     <TextView
+        android:id="@+id/tv_timeleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tv_quest"
+        android:layout_below="@+id/tv_title"
+        android:text="Time Left:" />
+
+    <TextView
         android:id="@+id/tv_quest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +47,7 @@
         android:layout_centerHorizontal="false"
         android:layout_marginRight="40sp"
         android:text="$date"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -124,5 +132,17 @@
         android:onClick="onConfirmButtonClicked"
         android:text="Confirm"
         android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/tv_cdtimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tv_timeleft"
+        android:layout_alignStart="@+id/tv_timeleft"
+        android:layout_below="@+id/tv_timeleft"
+        android:layout_marginTop="3sp"
+        android:text="$cdtimer"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_purple" />
 
 </RelativeLayout>

@@ -9,10 +9,10 @@ import com.evernote.android.job.JobRequest;
 
 import java.util.ArrayList;
 
-import static com.armyof2.poll4bunk.MainActivity.bunkNo;
-import static com.armyof2.poll4bunk.MainActivity.bunkUndec;
-import static com.armyof2.poll4bunk.MainActivity.bunkYes;
-import static com.armyof2.poll4bunk.MainActivity.bunkYes80;
+import static com.armyof2.poll4bunk.MainActivity.BUNK_NO;
+import static com.armyof2.poll4bunk.MainActivity.BUNK_UNDEC;
+import static com.armyof2.poll4bunk.MainActivity.BUNK_YES;
+import static com.armyof2.poll4bunk.MainActivity.BUNK_YES80;
 import static com.armyof2.poll4bunk.MainActivity.i;
 import static com.armyof2.poll4bunk.MainActivity.j;
 import static com.armyof2.poll4bunk.MainActivity.k;
@@ -24,10 +24,10 @@ public class PieChartActivity extends Job{
     String no = j;
     String undec = l;
     String yes80 = k;
-    ArrayList<String> bunkingYes = bunkYes;
-    ArrayList<String> bunkingNo = bunkNo;
-    ArrayList<String> bunkingYes80 = bunkYes80;
-    ArrayList<String> bunkingUndec = bunkUndec;
+    ArrayList<String> bunkingYes = BUNK_YES;
+    ArrayList<String> bunkingNo = BUNK_NO;
+    ArrayList<String> bunkingYes80 = BUNK_YES80;
+    ArrayList<String> bunkingUndec = BUNK_UNDEC;
     public static final String TAG = "my_job_tag";
 
     //pie chart references/variables
@@ -57,7 +57,7 @@ public class PieChartActivity extends Job{
 
 
         ++x;
-        if(x <= 40)
+        if(x <= 2)
             scheduleJob();
         return Result.SUCCESS;
     }
