@@ -31,6 +31,7 @@ public class CreateActivity extends FragmentActivity {
     static EditText bunkDate;
     private EditText bunkName;
     private EditText bunkNum;
+    private EditText bunkAdmin;
     private Intent intent;
     private FirebaseDatabase database;
     public static DatabaseReference myRef;
@@ -42,6 +43,7 @@ public class CreateActivity extends FragmentActivity {
         String name;
         String date;
         String num;
+        String admin;
     }
 
     BunkServer bunk;
@@ -52,6 +54,7 @@ public class CreateActivity extends FragmentActivity {
         setContentView(R.layout.activity_create);
 
         bunkName = (EditText) findViewById(R.id.et_pollname);
+        bunkAdmin = (EditText) findViewById(R.id.et_name);
         bunkDate = (EditText) findViewById(R.id.et_date);
         bunkDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +131,7 @@ public class CreateActivity extends FragmentActivity {
         bunk.name = bunkName.getText().toString();
         bunk.date = bunkDate.getText().toString();
         bunk.num = bunkNum.getText().toString();
+        bunk.admin = bunkAdmin.getText().toString();
 
         if(bunk.name.equals("")){
             Toast.makeText(this, "You forgot to input title!", Toast.LENGTH_SHORT).show();
@@ -141,11 +145,16 @@ public class CreateActivity extends FragmentActivity {
             Toast.makeText(this, "You forgot to input participants!", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(bunk.admin.equals("")){
+            Toast.makeText(this, "You forgot to input name!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         dataMap = new HashMap<String, String>();
         dataMap.put("Bunk Title", bunk.name);
         dataMap.put("Bunk Date", bunk.date);
         dataMap.put("Bunk Participants", bunk.num);
+        dataMap.put("Bunker Admin", bunk.admin);
 
         if (!serverExists) {
             myRef.child(userUid).setValue(dataMap);

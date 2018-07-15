@@ -7,6 +7,29 @@
     tools:context="com.armyof2.poll4bunk.MainActivity">
 
     <TextView
+        android:id="@+id/tv_admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tv_badmin"
+        android:layout_alignStart="@+id/tv_badmin"
+        android:layout_below="@+id/tv_badmin"
+        android:layout_marginTop="3sp"
+        android:scrollHorizontally="false"
+        android:text="$bunk admin"
+        android:textAlignment="center"
+        android:maxLines = "5"
+        android:scrollbars = "horizontal"
+        android:textColor="@android:color/holo_purple" />
+
+    <TextView
+        android:id="@+id/tv_badmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/butt_sendop"
+        android:layout_below="@+id/tv_title"
+        android:text="Bunk Admin:" />
+
+    <TextView
         android:id="@+id/tv_timeleft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -122,12 +145,12 @@
 
     <Button
         android:id="@+id/butt_sendop"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/tv_quest"
-        android:layout_alignStart="@+id/tv_quest"
         android:layout_below="@+id/radioGroup2"
         android:layout_marginBottom="20sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
         android:layout_marginTop="50sp"
         android:onClick="onConfirmButtonClicked"
         android:text="Confirm"

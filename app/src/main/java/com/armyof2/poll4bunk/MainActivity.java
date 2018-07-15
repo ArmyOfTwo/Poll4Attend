@@ -12,13 +12,11 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.evernote.android.job.*;
-import com.evernote.android.job.JobCreator;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView dateView;
     private TextView titleView;
     private TextView cdtimerView;
+    private TextView adminView;
     private int option = 4;
     int seconds , minutes;
     public static String i = "0", j = "0", k = "0", l = "0";
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         dateView = (TextView) findViewById(R.id.tv_date);
         titleView = (TextView) findViewById(R.id.tv_title);
         cdtimerView = (TextView) findViewById(R.id.tv_cdtimer);
+        adminView = (TextView) findViewById(R.id.tv_admin);
         r1 = (RadioButton) findViewById(R.id.rad_op1);
         r2 = (RadioButton) findViewById(R.id.rad_op2);
         r3 = (RadioButton) findViewById(R.id.rad_op3);
@@ -138,10 +138,12 @@ public class MainActivity extends AppCompatActivity {
                     String value = dataSnapshot.getValue(String.class);
                     bunkServerStuff.add(value);
                     Log.d("TAG", "onChildAdded: " + bunkServerStuff);
-                    dateView.setText(bunkServerStuff.get(0));
                     startTimer();
-                    if (bunkServerStuff.size() == 3)
+                    if (bunkServerStuff.size() == 4) {
+                        dateView.setText(bunkServerStuff.get(0));
                         titleView.setText(bunkServerStuff.get(2));
+                        adminView.setText(bunkServerStuff.get(3));
+                    }
                     bunkServerVotes.add(value);
                     if (dataSnapshot.getKey().equals("Yes")) {
                         i = value;
