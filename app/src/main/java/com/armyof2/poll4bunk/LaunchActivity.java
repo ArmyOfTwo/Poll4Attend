@@ -70,7 +70,8 @@ public class LaunchActivity extends AppCompatActivity {
                         Log.d("TAG", "SERVER_ID = " + SERVER_ID);
                         startActivity(intent);
                         return;
-                    }
+                    } else
+                        badToast();
                 }
             }
             @Override
@@ -86,5 +87,9 @@ public class LaunchActivity extends AppCompatActivity {
 
     public void goodToast(){
         Toast.makeText(this, "Server joined!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void badToast(){
+        Toast.makeText(this, "Server does not exists!", Toast.LENGTH_SHORT).show();
     }
 }

@@ -540,5 +540,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void destroy(){
         myRef.removeValue();
+        Intent i = new Intent(this, LaunchActivity.class);
+        startActivity(i);
     }
 }
