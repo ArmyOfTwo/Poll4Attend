@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView dateView;
     private TextView titleView;
     private int option = 4;
-    private String i = "0", j = "0", k = "0", l = "0";
+    public static String i = "0", j = "0", k = "0", l = "0";
     private FirebaseDatabase database;
     private DatabaseReference myRef, myRef2, myRef3;
     private ArrayList<String> bunkServerStuff;
