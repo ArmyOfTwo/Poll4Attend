@@ -4,6 +4,7 @@ package com.armyof2.poll4bunk;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobRequest;
@@ -37,6 +38,7 @@ public abstract class PieChartActivity extends Job {
         //pie chart references/variables
 
 
+
     }
         @Override
         @NonNull
@@ -44,6 +46,8 @@ public abstract class PieChartActivity extends Job {
             if (x == 1) {
                 //make pie chart
                 Log.d("TAG", "Pie Chart Created");
+
+
 
 
             }
