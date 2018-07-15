@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -82,6 +83,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w("TAG", "Google sign in failed", e);
+                Toast.makeText(this, "Are you connected to network?", Toast.LENGTH_SHORT).show();
                 updateUI(null);
             }
         }

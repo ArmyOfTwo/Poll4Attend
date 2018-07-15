@@ -3,9 +3,9 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'armyof2keys'
+            keyAlias 'armyof2key'
             keyPassword 'Deadwomansfood'
-            storeFile file('C:/Users/Lakshay/App Keys/keystore7.jks')
+            storeFile file('C:/Users/FEAR/FinalAppsKeys/keystorage.jks')
             storePassword 'Deadmansfood'
         }
         config1 {

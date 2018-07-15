@@ -3,6 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/et_bunkername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/et_pollname"
+        android:layout_alignStart="@+id/et_pollname"
+        android:layout_below="@+id/et_pollname"
+        android:layout_marginTop="50sp"
+        android:ems="10"
+        android:hint="Enter Your Name..."
+        android:inputType="textPersonName" />
+
     <Button
         android:id="@+id/butt_create"
         android:layout_width="match_parent"
@@ -30,7 +42,7 @@
         android:id="@+id/butt_join"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_pollname"
+        android:layout_below="@+id/et_bunkername"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="70sp"
         android:layout_marginRight="70sp"
@@ -47,7 +59,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="20sp"
         android:layout_marginRight="20sp"
-        android:layout_marginTop="85sp"
+        android:layout_marginTop="65sp"
         android:ems="10"
         android:hint="Enter Bunk Title..."
         android:inputType="textPersonName" />
