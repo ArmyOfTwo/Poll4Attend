@@ -353,7 +353,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void onConfirmButtonClicked(View view) {
         switch (option){
             case 1:
