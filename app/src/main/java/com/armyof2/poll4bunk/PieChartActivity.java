@@ -30,6 +30,10 @@ public class PieChartActivity extends Job{
     ArrayList<String> bunkingUndec = bunkUndec;
     public static final String TAG = "my_job_tag";
 
+    //pie chart references/variables
+
+
+
     @Override
     @NonNull
     protected Result onRunJob(Params params) {
