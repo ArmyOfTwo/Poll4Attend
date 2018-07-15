@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.evernote.android.job.*;
+import com.evernote.android.job.JobCreator;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,11 +20,13 @@ import java.util.ArrayList;
 
 import static com.armyof2.poll4bunk.LaunchActivity.SERVER_ID;
 import static com.armyof2.poll4bunk.LaunchActivity.name;
+import static com.armyof2.poll4bunk.PieChartActivity.scheduleJob;
 import static com.armyof2.poll4bunk.SignInActivity.userUid;
 
 public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<String> bunkYes, bunkNo, bunkYes80, bunkUndec;
+    public static int x = 1;
     private TextView dateView;
     private TextView titleView;
     private int option = 4;
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        JobManager.create(this).addJobCreator(new MyJobCreator());
 
         dateView = (TextView) findViewById(R.id.tv_date);
         titleView = (TextView) findViewById(R.id.tv_title);
@@ -343,6 +348,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        scheduleJob();
     }
 
     public void removeStringFromArraylist(String s, ArrayList<String> list)
