@@ -1,5 +1,6 @@
 package com.armyof2.poll4bunk;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -509,7 +510,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        long timeDiffInMilis = TimeUnit.MILLISECONDS.toMillis(timeDifference);
+        final long timeDiffInMilis = TimeUnit.MILLISECONDS.toMillis(timeDifference);
 
         cdTimer = new CountDownTimer(timeDiffInMilis, 1000) { // adjust the milli seconds here
 
@@ -523,8 +524,21 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                cdtimerView.setText("done!");
+                cdtimerView.setText("Polling Over");
+                if((timeDiffInMilis + 86400000) >= 0)
+                    over();
+                else
+                    destroy();
             }
         }.start();
+    }
+
+    public void over(){
+        Intent i = new Intent(this, PollingOverActivity.class);
+        startActivity(i);
+    }
+
+    public void destroy(){
+        myRef.removeValue();
     }
 }
