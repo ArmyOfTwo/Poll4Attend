@@ -22,7 +22,7 @@ import static com.armyof2.poll4bunk.SignInActivity.userUid;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<String> bunkYes, bunkNo, bunkYes80, bunkUndec;
+    public static ArrayList<String> bunkYes, bunkNo, bunkYes80, bunkUndec;
     private TextView dateView;
     private TextView titleView;
     private int option = 4;

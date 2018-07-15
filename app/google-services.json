@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "308611134321",
+    "firebase_url": "https://poll4bunk-server7.firebaseio.com",
+    "project_id": "poll4bunk-server7",
+    "storage_bucket": "poll4bunk-server7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308611134321:android:b2143044bfee43e1",
+        "android_client_info": {
+          "package_name": "com.armyof2.poll4bunk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308611134321-efv7fljefib9bvf4a4n480kn7hpsv35c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.armyof2.poll4bunk",
+            "certificate_hash": "55c2fb0ea90e37d24764769f0d942b956fd03fe3"
+          }
+        },
+        {
+          "client_id": "308611134321-tpn52gvvqg69daecdkj7jh2fd04b91bl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgDqGk-EKMgrOTB1abE-9QA_dzyK2mRuI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308611134321-tpn52gvvqg69daecdkj7jh2fd04b91bl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

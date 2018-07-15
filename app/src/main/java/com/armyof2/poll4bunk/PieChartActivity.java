@@ -1,6 +1,12 @@
 package com.armyof2.poll4bunk;
 
 
+import java.util.ArrayList;
+
+import static com.armyof2.poll4bunk.MainActivity.bunkNo;
+import static com.armyof2.poll4bunk.MainActivity.bunkUndec;
+import static com.armyof2.poll4bunk.MainActivity.bunkYes;
+import static com.armyof2.poll4bunk.MainActivity.bunkYes80;
 import static com.armyof2.poll4bunk.MainActivity.i;
 import static com.armyof2.poll4bunk.MainActivity.j;
 import static com.armyof2.poll4bunk.MainActivity.k;
@@ -15,6 +21,11 @@ public class PieChartActivity {
     String no = j;
     String undec = l;
     String yes80 = k;
+    ArrayList<String> bunkingYes = bunkYes;
+    ArrayList<String> bunkingNo = bunkNo;
+    ArrayList<String> bunkingYes80 = bunkYes80;
+    ArrayList<String> bunkingUndec = bunkUndec;
+
 
     @Override
     public int hashCode() {
