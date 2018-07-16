@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private String hasVoted = "yolo", added = "yolo";
     private CountDownTimer cdTimer;
     private long timeDifference = 0;
+    final long timeInterval = 1000;
 
     //------------------pie-----------------
     public static int[] yData = {Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
@@ -437,7 +438,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Pie chart
-        scheduleJob();
+        //scheduleJob();
+        Thread thread = new Thread(runnable);
+        thread.start();
     }
 
     public void removeStringFromArraylist(String s, ArrayList<String> list)
@@ -632,4 +635,20 @@ public class MainActivity extends AppCompatActivity {
         pieChart.invalidate();
     }
     //---------------------------------------------------------
+
+    Runnable runnable = new Runnable() {
+        public void run() {
+            while (true) {
+                Log.d("TAG", "PieChartValuesUpdated");
+                yData = new int[]{Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
+                addDataSet(pieChart, yData);
+                try {
+                    Thread.sleep(timeInterval);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
+
 }

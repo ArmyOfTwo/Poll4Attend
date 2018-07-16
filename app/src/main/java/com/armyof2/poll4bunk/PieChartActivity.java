@@ -48,6 +48,7 @@ public class PieChartActivity extends Job {
         if(x <= 40) {
             //update pie chart values
             Log.d("TAG", "Pie Chart Values Updated");
+
             yData = new int[]{Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
             addDataSet(pieChart, yData);
 
@@ -60,6 +61,7 @@ public class PieChartActivity extends Job {
     public static void scheduleJob() {
         new JobRequest.Builder(PieChartActivity.TAG)
                 .setExecutionWindow(2_000L, 40_000L) //Every 2 seconds for 40 seconds
+                .startNow()
                 .setRequiredNetworkType(JobRequest.NetworkType.CONNECTED)
                 .build()
                 .schedule();
