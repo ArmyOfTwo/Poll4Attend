@@ -85,15 +85,15 @@ public class MainActivity extends AppCompatActivity {
         //-----------------pie-----------------------------------------------
         pieChart = (PieChart) findViewById(R.id.piechart);
         description = new Description();
-        description.setText("Bunk Statistics");
+        description.setText("");
         description.setTextSize(14);
         //description.setPosition(600, 615);
 
         //set props
-        pieChart.setHoleRadius(65f);
+        pieChart.setHoleRadius(45f);
         pieChart.setTransparentCircleAlpha(25);
         pieChart.setTransparentCircleRadius(75f);
-        pieChart.setCenterText("VOTE 4 YES!");
+        pieChart.setCenterText("");
         pieChart.setCenterTextSize(15);
         pieChart.setCenterTextColor(Color.LTGRAY);
         pieChart.setDescription(description);
@@ -618,10 +618,10 @@ public class MainActivity extends AppCompatActivity {
 
         //set colors
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.GREEN);
-        colors.add(Color.RED);
-        colors.add(Color.BLUE);
-        colors.add(Color.YELLOW);
+        colors.add(Color.parseColor("#6495ed"));
+        colors.add(Color.parseColor("#66cdaa"));
+        colors.add(Color.parseColor("#eedd82"));
+        colors.add(Color.parseColor("#ffb6c1"));
         pieDataSet.setColors(colors);
 
 
