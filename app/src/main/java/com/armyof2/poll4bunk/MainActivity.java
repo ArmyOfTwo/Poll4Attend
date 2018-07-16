@@ -1,6 +1,7 @@
 package com.armyof2.poll4bunk;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,15 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.evernote.android.job.*;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
     private CountDownTimer cdTimer;
     private long timeDifference = 0;
 
+    //------------------pie-----------------
+    public static int[] yData = {Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
+    public static PieChart pieChart;
+    Description description;
+    //---------------------------------------
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +80,40 @@ public class MainActivity extends AppCompatActivity {
                         ViewGroup.LayoutParams.MATCH_PARENT));
 
         JobManager.create(this).addJobCreator(new MyJobCreator());
+
+        //-----------------pie-----------------------------------------------
+        pieChart = (PieChart) findViewById(R.id.piechart);
+        description = new Description();
+        description.setText("Bunk Statistics");
+        description.setTextSize(14);
+        //description.setPosition(600, 615);
+
+        //set props
+        pieChart.setHoleRadius(65f);
+        pieChart.setTransparentCircleAlpha(25);
+        pieChart.setTransparentCircleRadius(75f);
+        pieChart.setCenterText("VOTE 4 YES!");
+        pieChart.setCenterTextSize(15);
+        pieChart.setCenterTextColor(Color.LTGRAY);
+        pieChart.setDescription(description);
+        //pieChart.setDrawEntryLabels(true);
+        pieChart.setRotationEnabled(true);
+
+        //add data set
+        addDataSet(pieChart, yData);
+
+        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+
+            }
+
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
+        //-------------------------------------------------------------------------------
 
         dateView = (TextView) findViewById(R.id.tv_date);
         titleView = (TextView) findViewById(R.id.tv_title);
@@ -386,7 +436,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //start creation of pie chart
+        //Pie chart
         scheduleJob();
     }
 
@@ -496,6 +546,7 @@ public class MainActivity extends AppCompatActivity {
                 hasVoted = "undec";
                 break;
         }
+        //addDataSet(pieChart, yData);
     }
 
     public void startTimer(){
@@ -504,6 +555,7 @@ public class MainActivity extends AppCompatActivity {
         Date d1 = Calendar.getInstance().getTime();
         Date d2;
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
         try {
             d2 = format.parse(endDate);
             timeDifference = d2.getTime() - d1.getTime();
@@ -545,4 +597,39 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, LaunchActivity.class);
         startActivity(i);
     }
+
+    //--------------------------pie---------------------------------------------
+
+    public static void addDataSet(PieChart pieChart, int[] yData){
+
+        ArrayList<PieEntry> yEntrys = new ArrayList<>();
+
+        for (int i = 0; i < yData.length; i++){
+            yEntrys.add(new PieEntry(yData[i], i));
+        }
+
+        //add data
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Y  N  8  U");
+        pieDataSet.setSliceSpace(3);
+        pieDataSet.setValueTextSize(9);
+
+        //set colors
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.GREEN);
+        colors.add(Color.RED);
+        colors.add(Color.BLUE);
+        colors.add(Color.YELLOW);
+        pieDataSet.setColors(colors);
+
+
+        Legend legend = pieChart.getLegend();
+        legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+
+        //create pie obj
+        PieData pieData = new PieData(pieDataSet);
+        pieChart.setData(pieData);
+        pieChart.invalidate();
+    }
+    //---------------------------------------------------------
 }

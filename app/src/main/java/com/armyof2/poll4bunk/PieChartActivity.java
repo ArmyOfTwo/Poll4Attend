@@ -1,6 +1,7 @@
 package com.armyof2.poll4bunk;
 
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,11 +15,15 @@ import static com.armyof2.poll4bunk.MainActivity.BUNK_NO;
 import static com.armyof2.poll4bunk.MainActivity.BUNK_UNDEC;
 import static com.armyof2.poll4bunk.MainActivity.BUNK_YES;
 import static com.armyof2.poll4bunk.MainActivity.BUNK_YES80;
+import static com.armyof2.poll4bunk.MainActivity.addDataSet;
 import static com.armyof2.poll4bunk.MainActivity.i;
 import static com.armyof2.poll4bunk.MainActivity.j;
 import static com.armyof2.poll4bunk.MainActivity.k;
 import static com.armyof2.poll4bunk.MainActivity.l;
+import static com.armyof2.poll4bunk.MainActivity.pieChart;
 import static com.armyof2.poll4bunk.MainActivity.x;
+import static com.armyof2.poll4bunk.MainActivity.yData;
+
 
 public class PieChartActivity extends Job {
 
@@ -31,6 +36,7 @@ public class PieChartActivity extends Job {
     ArrayList<String> bunkingYes80 = BUNK_YES80;
     ArrayList<String> bunkingUndec = BUNK_UNDEC;
     public static final String TAG = "my_job_tag";
+    Intent intent;
 
     //pie chart references/variables
 
@@ -39,29 +45,16 @@ public class PieChartActivity extends Job {
     @Override
     @NonNull
     protected Result onRunJob(Params params) {
-        if(x == 1){
-            //make pie chart
-            Log.d("TAG", "Pie Chart Created");
+        if(x <= 40) {
+            //update pie chart values
+            Log.d("TAG", "Pie Chart Values Updated");
+            yData = new int[]{Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
+            addDataSet(pieChart, yData);
 
-
-
-
-
-        }
-
-        //update pie chart values
-        Log.d("TAG", "Pie Chart Values Updated");
-
-
-
-
-
-
-
-        ++x;
-        if(x <= 2)
             scheduleJob();
-        return Result.SUCCESS;
+            x++;
+        }
+            return Result.SUCCESS;
     }
 
     public static void scheduleJob() {
