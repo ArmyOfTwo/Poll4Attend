@@ -7,4 +7,9 @@
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_300">#E0E0E0</color>
     <color name="grey_500">#9E9E9E</color>
+
+    <color name="PieChartBlue">#6495ed</color>
+    <color name="PieChartGreen">#66cdaa</color>
+    <color name="PieChartYellow">#eedd82</color>
+    <color name="PieChartPink">#ffb6c2</color>
 </resources>

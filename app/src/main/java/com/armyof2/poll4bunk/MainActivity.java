@@ -91,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
         //set props
         pieChart.setHoleRadius(45f);
-        pieChart.setTransparentCircleAlpha(25);
-        pieChart.setTransparentCircleRadius(75f);
+        pieChart.setTransparentCircleAlpha(45);
+        pieChart.setTransparentCircleRadius(55f);
         pieChart.setCenterText("");
         pieChart.setCenterTextSize(15);
         pieChart.setCenterTextColor(Color.LTGRAY);

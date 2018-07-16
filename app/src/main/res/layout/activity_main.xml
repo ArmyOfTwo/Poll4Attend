@@ -58,7 +58,7 @@
         android:layout_marginTop="11dp"
         android:shadowColor="@color/colorAccent"
         android:text="Mass Bunk!!"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/PieChartYellow"
         android:textSize="40sp" />
 
     <TextView
@@ -70,7 +70,7 @@
         android:layout_centerHorizontal="false"
         android:layout_marginRight="40sp"
         android:text="$date"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@color/PieChartBlue"
         android:textSize="24sp" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -94,7 +94,7 @@
                 android:layout_below="@+id/tv_quest"
                 android:layout_marginLeft="30dp"
                 android:text="Yes! Count me in!"
-                android:textColor="@android:color/holo_green_dark"
+                android:textColor="@color/PieChartGreen"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -106,7 +106,7 @@
                 android:layout_alignEnd="@+id/tv_quest"
                 android:layout_marginLeft="63dp"
                 android:text="No, not interested"
-                android:textColor="@android:color/holo_red_dark"
+                android:textColor="@color/PieChartPink"
                 android:textSize="14sp" />
 
         </LinearLayout>
