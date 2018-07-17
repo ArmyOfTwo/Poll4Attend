@@ -25,9 +25,10 @@
         android:id="@+id/tv_badmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/butt_sendop"
         android:layout_below="@+id/tv_title"
-        android:text="Bunk Admin:" />
+        android:layout_marginLeft="20dp"
+        android:text="Bunk Admin:"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/tv_timeleft"
@@ -35,18 +36,18 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/tv_quest"
         android:layout_below="@+id/tv_title"
-        android:text="Time Left:" />
+        android:text="Time Left:"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/tv_quest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tv_title"
-        android:layout_marginLeft="20dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="270dp"
         android:text="Would you like to participate in Mass Bunk on:  "
+        android:textColor="@android:color/white"
         android:textSize="24sp" />
 
     <TextView
@@ -58,7 +59,7 @@
         android:layout_marginTop="11dp"
         android:shadowColor="@color/colorAccent"
         android:text="Mass Bunk!!"
-        android:textColor="@color/PieChartYellow"
+        android:textColor="@android:color/white"
         android:textSize="40sp" />
 
     <TextView
@@ -83,7 +84,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="19dp"
         android:text="Yes! Count me in!"
-        android:textColor="@color/PieChartGreen"
+        android:textColor="@android:color/white"
+        android:buttonTint="@color/PieChartGreen"
         android:textSize="14sp" />
 
     <RadioButton
@@ -95,7 +97,8 @@
         android:layout_alignStart="@+id/rad_op1"
         android:layout_marginLeft="210dp"
         android:text="No, not interested"
-        android:textColor="@color/PieChartPink"
+        android:textColor="@android:color/white"
+        android:buttonTint="@color/PieChartPink"
         android:textSize="14sp" />
 
 
@@ -107,7 +110,8 @@
         android:layout_below="@+id/rad_op1"
         android:layout_marginTop="20dp"
         android:text="Yes.. if 80% or more are in"
-        android:textColor="?attr/actionModeSplitBackground"
+        android:textColor="@android:color/white"
+        android:buttonTint="@color/PieChartBlue"
         android:textSize="14sp" />
 
     <RadioButton
@@ -118,7 +122,8 @@
         android:layout_alignBottom="@+id/rad_op3"
         android:layout_alignStart="@+id/rad_op2"
         android:text="Not decided yet"
-        android:textColor="?android:attr/colorPressedHighlight"
+        android:textColor="@android:color/white"
+        android:buttonTint="@color/PieChartYellow"
         android:textSize="14sp" />
 
 
@@ -126,13 +131,17 @@
         android:id="@+id/butt_sendop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rad_op3"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rad_op4"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="40dp"
         android:onClick="onConfirmButtonClicked"
         android:text="Confirm"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
         android:textSize="17sp" />
 
     <TextView
