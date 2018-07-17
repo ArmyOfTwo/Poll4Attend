@@ -73,85 +73,60 @@
         android:textColor="@color/PieChartBlue"
         android:textSize="24sp" />
 
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/radioGroup2"
-        android:layout_width="match_parent"
+
+    <RadioButton
+        android:id="@+id/rad_op1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_date"
-        android:layout_marginTop="30dp">
+        android:layout_alignStart="@+id/tv_quest"
+        android:layout_below="@+id/tv_quest"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="19dp"
+        android:text="Yes! Count me in!"
+        android:textColor="@color/PieChartGreen"
+        android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+    <RadioButton
+        android:id="@+id/rad_op2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rad_op1"
+        android:layout_alignBottom="@+id/rad_op1"
+        android:layout_alignStart="@+id/rad_op1"
+        android:layout_marginLeft="210dp"
+        android:text="No, not interested"
+        android:textColor="@color/PieChartPink"
+        android:textSize="14sp" />
 
-            <RadioButton
-                android:id="@+id/rad_op1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/tv_quest"
-                android:layout_below="@+id/tv_quest"
-                android:layout_marginLeft="30dp"
-                android:text="Yes! Count me in!"
-                android:textColor="@color/PieChartGreen"
-                android:textSize="14sp" />
 
-            <RadioButton
-                android:id="@+id/rad_op2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/rad_op1"
-                android:layout_alignBottom="@+id/rad_op1"
-                android:layout_alignEnd="@+id/tv_quest"
-                android:layout_marginLeft="63dp"
-                android:text="No, not interested"
-                android:textColor="@color/PieChartPink"
-                android:textSize="14sp" />
+    <RadioButton
+        android:id="@+id/rad_op3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/rad_op1"
+        android:layout_below="@+id/rad_op1"
+        android:layout_marginTop="20sp"
+        android:text="Yes.. if 80% or more are in"
+        android:textColor="?attr/actionModeSplitBackground"
+        android:textSize="14sp" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <RadioButton
-                android:id="@+id/rad_op3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/rad_op1"
-                android:layout_below="@+id/rad_op1"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:text="Yes.. if 80% or more are in"
-                android:textColor="?attr/actionModeSplitBackground"
-                android:textSize="14sp" />
-
-            <RadioButton
-                android:id="@+id/rad_op4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/rad_op3"
-                android:layout_alignBottom="@+id/rad_op3"
-                android:layout_alignStart="@+id/rad_op2"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Not decided yet"
-                android:textColor="?android:attr/colorPressedHighlight"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-    </RadioGroup>
+    <RadioButton
+        android:id="@+id/rad_op4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rad_op3"
+        android:layout_alignBottom="@+id/rad_op3"
+        android:layout_alignStart="@+id/rad_op2"
+        android:text="Not decided yet"
+        android:textColor="?android:attr/colorPressedHighlight"
+        android:textSize="14sp" />
 
 
     <Button
         android:id="@+id/butt_sendop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/radioGroup2"
+        android:layout_below="@+id/rad_op3"
         android:layout_marginBottom="20sp"
         android:layout_marginLeft="10sp"
         android:layout_marginRight="10sp"

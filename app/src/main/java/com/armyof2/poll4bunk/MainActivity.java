@@ -16,6 +16,7 @@ import com.evernote.android.job.*;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -31,8 +32,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static com.armyof2.poll4bunk.LaunchActivity.SERVER_ID;
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> bunkYes, bunkNo, bunkYes80, bunkUndec;
     public static ArrayList<String> BUNK_YES, BUNK_NO, BUNK_YES80, BUNK_UNDEC;
     public static int x = 1;
+    public static float posp = -1;
     private TextView dateView;
     private TextView titleView;
     private TextView cdtimerView;
@@ -106,7 +110,9 @@ public class MainActivity extends AppCompatActivity {
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-
+                posp = h.getX();
+                CustomDialogBox cdd=new CustomDialogBox(MainActivity.this);
+                cdd.show();
             }
 
             @Override
@@ -607,27 +613,33 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
 
+
         for (int i = 0; i < yData.length; i++){
             yEntrys.add(new PieEntry(yData[i], i));
         }
 
         //add data
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "Y  N  8  U");
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "");
         pieDataSet.setSliceSpace(3);
         pieDataSet.setValueTextSize(9);
+        pieDataSet.setValueTextColor(Color.WHITE);
 
         //set colors
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.parseColor("#6495ed"));
         colors.add(Color.parseColor("#66cdaa"));
-        colors.add(Color.parseColor("#eedd82"));
         colors.add(Color.parseColor("#ffb6c1"));
+        colors.add(Color.parseColor("#6495ed"));
+        colors.add(Color.parseColor("#eedd82"));
         pieDataSet.setColors(colors);
 
 
         Legend legend = pieChart.getLegend();
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
+        legend.setEnabled(false);
+        //legend.setForm(Legend.LegendForm.CIRCLE);
+        //legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART_CENTER);
+        //legend.setOrientation(Legend.LegendOrientation.VERTICAL);
+        //legend.setYEntrySpace(10);
+
 
         //create pie obj
         PieData pieData = new PieData(pieDataSet);
