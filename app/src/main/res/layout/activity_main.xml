@@ -13,7 +13,7 @@
         android:layout_alignEnd="@+id/tv_badmin"
         android:layout_alignStart="@+id/tv_badmin"
         android:layout_below="@+id/tv_badmin"
-        android:layout_marginTop="3sp"
+        android:layout_marginTop="3dp"
         android:scrollHorizontally="false"
         android:text="$bunk admin"
         android:textAlignment="center"
@@ -43,9 +43,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tv_title"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginTop="270sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="270dp"
         android:text="Would you like to participate in Mass Bunk on:  "
         android:textSize="24sp" />
 
@@ -68,7 +68,7 @@
         android:layout_alignBottom="@+id/tv_quest"
         android:layout_alignParentRight="true"
         android:layout_centerHorizontal="false"
-        android:layout_marginRight="40sp"
+        android:layout_marginRight="40dp"
         android:text="$date"
         android:textColor="@color/PieChartBlue"
         android:textSize="24sp" />
@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/rad_op1"
         android:layout_below="@+id/rad_op1"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="20dp"
         android:text="Yes.. if 80% or more are in"
         android:textColor="?attr/actionModeSplitBackground"
         android:textSize="14sp" />
@@ -127,10 +127,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rad_op3"
-        android:layout_marginBottom="20sp"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginTop="50sp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
         android:onClick="onConfirmButtonClicked"
         android:text="Confirm"
         android:textSize="17sp" />
@@ -142,7 +142,7 @@
         android:layout_alignEnd="@+id/tv_timeleft"
         android:layout_alignStart="@+id/tv_timeleft"
         android:layout_below="@+id/tv_timeleft"
-        android:layout_marginTop="3sp"
+        android:layout_marginTop="3dp"
         android:text="$cdtimer"
         android:textAlignment="center"
         android:textColor="@android:color/holo_purple" />

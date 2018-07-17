@@ -9,8 +9,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="385sp"
-        android:layout_marginLeft="0sp"
-        android:layout_marginRight="0sp"
-        android:layout_marginTop="130sp"></com.github.mikephil.charting.charts.PieChart>
+        android:layout_marginBottom="385dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="130dp"></com.github.mikephil.charting.charts.PieChart>
 </RelativeLayout>
