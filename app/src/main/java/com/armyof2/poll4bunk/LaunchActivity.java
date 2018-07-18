@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,8 @@ public class LaunchActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private String serverName, strOut, strFinal[];
     private Toast mToast;
+    private GoogleSignInAccount acc;
+    public static String name2;
 
 
     @Override
@@ -46,6 +50,11 @@ public class LaunchActivity extends AppCompatActivity {
         myRef = database.getReference();
         mToast = Toast.makeText( this  , "" , Toast.LENGTH_SHORT );
 
+        acc = GoogleSignIn.getLastSignedInAccount(this);
+        if(acc != null)
+            name2 = acc.getDisplayName();
+
+        bunkerName.setText(name2.toString());
     }
 
     public void onJoinButtonClicked(View view) {
