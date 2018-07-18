@@ -22,14 +22,14 @@
         android:id="@+id/butt_create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/butt_join"
         android:layout_alignStart="@+id/butt_join"
-        android:layout_below="@+id/tv_or"
-        android:layout_marginRight="70dp"
-        android:layout_marginTop="65dp"
+        android:layout_below="@+id/butt_join"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/roundbutton"
         android:onClick="onCreateButtonClicked"
         android:text="CREATE"
-        android:textSize="20sp"
-        android:background="@drawable/roundbutton"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -50,11 +50,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/roundbutton"
         android:onClick="onJoinButtonClicked"
         android:text="JOIN"
-        android:textSize="20sp"
-        android:background="@drawable/roundbutton"/>
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/et_pollname"
@@ -70,13 +70,4 @@
         android:textColorHint="@color/colorHint"
         android:inputType="textPersonName" />
 
-    <TextView
-        android:id="@+id/tv_or"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/butt_join"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
-        android:text="----------OR----------"
-        android:textSize="20sp" />
 </RelativeLayout>

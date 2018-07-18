@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
                         //titleView.setText(bunkServerStuff.get(2));
                         totalpeeps = bunkServerStuff.get(1);
                         adminView.setText(bunkServerStuff.get(3));
-                        setTitle("Poll4Bunk: " + bunkServerStuff.get(2));
+                        setTitle(bunkServerStuff.get(2));
                         servTitle = bunkServerStuff.get(2);
                     }
                     bunkServerVotes.add(value);

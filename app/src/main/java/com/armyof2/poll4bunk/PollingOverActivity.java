@@ -91,13 +91,13 @@ public class PollingOverActivity extends AppCompatActivity{
         //Bunk Result
         android.util.Log.d("TAG", "run: i = " + i + "  k = " + k);
         if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 90){
-            bunkRes.setText("Huge Success!");
+            bunkRes.setText("Huge Success");
             bunkRes.setTextColor(getResources().getColor(R.color.PieChartGreen));
         } else if((((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 80) && (((float)Integer.parseInt(k)/Integer.parseInt(totalpeeps) * 100) >= 10)){
-            bunkRes.setText("Huge Success!");
+            bunkRes.setText("Huge Success");
             bunkRes.setTextColor(getResources().getColor(R.color.PieChartGreen));
         } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 80){
-            bunkRes.setText("Success!");
+            bunkRes.setText("Success");
             bunkRes.setTextColor(getResources().getColor(R.color.PieChartGreen));
         } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 70){
             bunkRes.setText("Just Fine");
@@ -109,14 +109,14 @@ public class PollingOverActivity extends AppCompatActivity{
             bunkRes.setText("Not that good");
             bunkRes.setTextColor(getResources().getColor(R.color.PieChartYellow));
         } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 20) {
-            bunkRes.setText("Failure..");
+            bunkRes.setText("Failure");
             bunkRes.setTextColor(getResources().getColor(R.color.PieChartPink));
         } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 0) {
-            bunkRes.setText("Huge Failure..");
+            bunkRes.setText("Huge Failure");
             bunkRes.setTextColor(getResources().getColor(R.color.PieChartPink));
         }
 
-        setTitle("Poll4Bunk: " + servTitle);
+        setTitle(servTitle);
 
         //REALTIME EVEN AFTER OVER:
         Thread thread = new Thread(runnable);
@@ -137,7 +137,7 @@ public class PollingOverActivity extends AppCompatActivity{
 
 
         //add data
-        PieDataSet pieDataSet = new PieDataSet(yEntrys, "-----Votes-----");
+        PieDataSet pieDataSet = new PieDataSet(yEntrys, "");
         pieDataSet.setValueFormatter(new DecimalRemover(new DecimalFormat("###,###,###")));
         pieDataSet.setSliceSpace(3);
         pieDataSet.setValueTextSize(18);
@@ -161,8 +161,8 @@ public class PollingOverActivity extends AppCompatActivity{
         legend.setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);
         legend.setOrientation(Legend.LegendOrientation.VERTICAL);
         legend.setTextColor(Color.WHITE);
-        legend.setFormSize(11);
-        legend.setTextSize(11);
+        legend.setFormSize(9);
+        legend.setTextSize(9);
         //legend.setYEntrySpace(10);
 
 

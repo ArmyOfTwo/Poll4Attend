@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 import static com.armyof2.poll4bunk.SignInActivity.userUid;
 
 
@@ -51,10 +52,16 @@ public class LaunchActivity extends AppCompatActivity {
         mToast = Toast.makeText( this  , "" , Toast.LENGTH_SHORT );
 
         acc = GoogleSignIn.getLastSignedInAccount(this);
-        if(acc != null)
+        if (acc != null) {
             name2 = acc.getDisplayName();
-
-        bunkerName.setText(name2.toString());
+            String[] strArray = name2.split(" ");
+            StringBuilder builder = new StringBuilder();
+            for (String s : strArray) {
+                String cap = s.substring(0, 1).toUpperCase() + s.substring(1);
+                builder.append(cap + " ");
+            }
+            bunkerName.setText(builder.toString());
+        }
     }
 
     public void onJoinButtonClicked(View view) {
