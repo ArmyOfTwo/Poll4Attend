@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,6 +31,7 @@ public class LaunchActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference myRef;
     private String serverName, strOut, strFinal[];
+    private Toast mToast;
 
 
     @Override
@@ -40,6 +44,8 @@ public class LaunchActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
+        mToast = Toast.makeText( this  , "" , Toast.LENGTH_SHORT );
+
     }
 
     public void onJoinButtonClicked(View view) {
@@ -86,10 +92,46 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     public void goodToast(){
-        Toast.makeText(this, "Server joined!", Toast.LENGTH_SHORT).show();
+        mToast.setText("Server joined!");
+        mToast.show();
     }
 
     public void badToast(){
-        Toast.makeText(this, "Server does not exists!", Toast.LENGTH_SHORT).show();
+        mToast.setText("Server does not exists!");
+        mToast.show();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.home:
+                Intent i = new Intent(this,SignInActivity.class);
+                startActivity(i);
+                finish();
+                return true;
+
+            case R.id.about:
+                i = new Intent(this,Info.class);
+                startActivity(i);
+                return true;
+
+            case R.id.clog:
+                i = new Intent(this, com.armyof2.poll4bunk.Log.class);
+                startActivity(i);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
+

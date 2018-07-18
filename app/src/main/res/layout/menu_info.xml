@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="23dp"
+        android:text="Poll4Bunk v1.0"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Created By: ArmyOf2"
+        android:textColor="@android:color/background_light"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/title4"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="35dp"
+        android:text="Is used as a Polling System, particularly to commit Mass Bunks, may it be for University, School, etc. You can create your own Bunk Server, but one per user/account. The app also implements a Real-time Piechart, connected with a backend, for displaying live votes and also by whom. Go-on try the app out, and if you like it, don't forget to give s a feedback. Thank you."
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_alignStart="@+id/textView7"
+        android:layout_below="@+id/textView7"
+        android:layout_marginTop="32dp"
+        android:text="Instructions: "
+        android:textColor="@android:color/background_dark"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
+        android:layout_below="@+id/textView8"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="15dp"
+        android:maxLines = "10"
+        android:scrollbars = "vertical"
+
+        android:text="
+\n► Sign-in with a google account
+\n► Tap on 'Proceed'
+\n► Tap on create server (if you want to be the admin)
+\n► Enter the server/bunk details
+\n► Tap 'Create'
+\n► Now inform your fellow bunkers about the server (title)
+\n► Enter your name and bunk title and tap 'Join'
+\n► Tap on an option
+\n► Tap 'Confirm'to send vote
+\n► Checkout the Pie-chart! (Tap it, Spin it etc.)
+\n► Polling ends on the set-date but you can still view results
+\n► Server self-destructs one day after polling ends
+\n► Enjoy!"
+        android:textSize="18sp" />
+
+</RelativeLayout>

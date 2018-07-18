@@ -137,6 +137,10 @@ public class CreateActivity extends FragmentActivity {
             Toast.makeText(this, "You forgot to input title!", Toast.LENGTH_SHORT).show();
             return;
         }
+        if(bunk.name.contains(",")){
+            Toast.makeText(this, "No commas allowed, sorry!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(bunk.date.equals("")){
             Toast.makeText(this, "You forgot to input date!", Toast.LENGTH_SHORT).show();
             return;

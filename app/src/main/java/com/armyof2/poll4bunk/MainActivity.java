@@ -7,9 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.evernote.android.job.*;
@@ -29,6 +33,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,15 +52,17 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> bunkYes, bunkNo, bunkYes80, bunkUndec;
     public static ArrayList<String> BUNK_YES, BUNK_NO, BUNK_YES80, BUNK_UNDEC;
+    public static String totalpeeps = "0";
     public static int x = 1;
     public static float posp = -1;
     private TextView dateView;
-    private TextView titleView;
+    //private TextView titleView;
     private TextView cdtimerView;
     private TextView adminView;
+    private TextView questView;
     private int option = 4;
     int seconds , minutes;
-    public static String i = "0", j = "0", k = "0", l = "0";
+    public static String i = "0", j = "0", k = "0", l = "0", m = "0";
     private static final String FORMAT = "%02d:%02d:%02d";
     private FirebaseDatabase database;
     private DatabaseReference myRef, myRef2, myRef3;
@@ -66,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private CountDownTimer cdTimer;
     private long timeDifference = 0;
     final long timeInterval = 100;
+    public static String servTitle;
 
     //------------------pie-----------------
     public static int[] yData = {Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
@@ -86,8 +94,13 @@ public class MainActivity extends AppCompatActivity {
 
         JobManager.create(this).addJobCreator(new MyJobCreator());
 
+        questView = (TextView) findViewById(R.id.tv_quest);
+
         //-----------------pie-----------------------------------------------
         pieChart = (PieChart) findViewById(R.id.piechart);
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)questView.getLayoutParams();
+        params.addRule(RelativeLayout.BELOW,pieChart.getId());
+        questView.setLayoutParams(params);
         description = new Description();
         description.setText("");
         description.setTextSize(14);
@@ -95,11 +108,11 @@ public class MainActivity extends AppCompatActivity {
 
         //set props
         pieChart.setHoleRadius(45f);
-        pieChart.setTransparentCircleAlpha(45);
+        pieChart.setHoleColor(424242);
+        pieChart.setTransparentCircleAlpha(50);
         pieChart.setTransparentCircleRadius(55f);
-        pieChart.setCenterText("");
         pieChart.setCenterTextSize(15);
-        pieChart.setCenterTextColor(Color.LTGRAY);
+        pieChart.setCenterTextColor(Color.WHITE);
         pieChart.setDescription(description);
         //pieChart.setDrawEntryLabels(true);
         pieChart.setRotationEnabled(true);
@@ -123,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         //-------------------------------------------------------------------------------
 
         dateView = (TextView) findViewById(R.id.tv_date);
-        titleView = (TextView) findViewById(R.id.tv_title);
+        //titleView = (TextView) findViewById(R.id.tv_title);
         cdtimerView = (TextView) findViewById(R.id.tv_cdtimer);
         adminView = (TextView) findViewById(R.id.tv_admin);
         r1 = (RadioButton) findViewById(R.id.rad_op1);
@@ -198,8 +211,11 @@ public class MainActivity extends AppCompatActivity {
                     startTimer();
                     if (bunkServerStuff.size() == 4) {
                         dateView.setText(bunkServerStuff.get(0));
-                        titleView.setText(bunkServerStuff.get(2));
+                        //titleView.setText(bunkServerStuff.get(2));
+                        totalpeeps = bunkServerStuff.get(1);
                         adminView.setText(bunkServerStuff.get(3));
+                        setTitle("Poll4Bunk: " + bunkServerStuff.get(2));
+                        servTitle = bunkServerStuff.get(2);
                     }
                     bunkServerVotes.add(value);
                     if (dataSnapshot.getKey().equals("Yes")) {
@@ -613,6 +629,8 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
 
+        m = Integer.toString(Integer.parseInt(i)+Integer.parseInt(j)+Integer.parseInt(k)+Integer.parseInt(l));
+        pieChart.setCenterText("Total Votes: " + totalpeeps + "\nVotes Made: " + m);
 
         for (int i = 0; i < yData.length; i++){
             yEntrys.add(new PieEntry(yData[i], i));
@@ -620,8 +638,9 @@ public class MainActivity extends AppCompatActivity {
 
         //add data
         PieDataSet pieDataSet = new PieDataSet(yEntrys, "");
+        pieDataSet.setValueFormatter(new DecimalRemover(new DecimalFormat("###,###,###")));
         pieDataSet.setSliceSpace(3);
-        pieDataSet.setValueTextSize(9);
+        pieDataSet.setValueTextSize(18);
         pieDataSet.setValueTextColor(Color.WHITE);
 
         //set colors
@@ -669,5 +688,43 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.home:
+                Intent i = new Intent(this,SignInActivity.class);
+                startActivity(i);
+                finish();
+                return true;
+
+            case R.id.about:
+                i = new Intent(this,Info.class);
+                startActivity(i);
+                return true;
+
+            case R.id.clog:
+                i = new Intent(this, com.armyof2.poll4bunk.Log.class);
+                startActivity(i);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, LaunchActivity.class);
+        startActivity(intent);
+    }
 
 }

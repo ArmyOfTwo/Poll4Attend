@@ -7,6 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -176,6 +179,38 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         } else if (i == R.id.proceed_button) {
             Intent intent = new Intent(this, LaunchActivity.class);
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.home:
+                Intent i = new Intent(this,SignInActivity.class);
+                startActivity(i);
+                finish();
+                return true;
+
+            case R.id.about:
+                i = new Intent(this,Info.class);
+                startActivity(i);
+                return true;
+
+            case R.id.clog:
+                i = new Intent(this,Log.class);
+                startActivity(i);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
