@@ -3,6 +3,7 @@
     <color name="colorPrimary">#373740</color>
     <color name="colorPrimaryDark">#27272f</color>
     <color name="colorAccent">#1EB980</color>
+    <color name="colorHint">#a6a6b9</color>
 
     <color name="rallyGreen1">#37EFBA</color>
     <color name="rallyGreen2">#04B97F</color>

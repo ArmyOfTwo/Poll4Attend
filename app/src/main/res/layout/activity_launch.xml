@@ -15,7 +15,8 @@
         android:hint="Enter Your Name..."
         android:editable="false"
         android:focusable="false"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColorHint="@color/colorHint"/>
 
     <Button
         android:id="@+id/butt_create"
@@ -27,7 +28,8 @@
         android:layout_marginTop="65dp"
         android:onClick="onCreateButtonClicked"
         android:text="CREATE"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:background="@drawable/roundbutton"/>
 
     <TextView
         android:id="@+id/tv_title"
@@ -37,7 +39,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp"
         android:text="Mass Bunk Poll Server"
-        android:textColor="?android:attr/colorMultiSelectHighlight"
+        android:textColor="@android:color/white"
         android:textSize="35sp" />
 
     <Button
@@ -51,7 +53,8 @@
         android:layout_marginTop="55dp"
         android:onClick="onJoinButtonClicked"
         android:text="JOIN"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:background="@drawable/roundbutton"/>
 
     <EditText
         android:id="@+id/et_pollname"
@@ -64,6 +67,7 @@
         android:layout_marginTop="65dp"
         android:ems="10"
         android:hint="Enter Bunk Title..."
+        android:textColorHint="@color/colorHint"
         android:inputType="textPersonName" />
 
     <TextView
