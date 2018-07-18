@@ -131,9 +131,8 @@ public class PollingOverActivity extends AppCompatActivity{
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
 
         for (int i = 0; i < yData.length; i++){
-            if(yData[i] == 0)
-                xData[i] = "";
-            yEntrys.add(new PieEntry(yData[i], xData[i]));
+            if(yData[i] != 0)
+                yEntrys.add(new PieEntry(yData[i], xData[i]));
         }
 
 
@@ -146,10 +145,14 @@ public class PollingOverActivity extends AppCompatActivity{
 
         //set colors
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.parseColor("#66cdaa"));
-        colors.add(Color.parseColor("#ffb6c1"));
-        colors.add(Color.parseColor("#6495ed"));
-        colors.add(Color.parseColor("#eedd82"));
+        if(yData[0] != 0)
+            colors.add(Color.parseColor("#66cdaa"));
+        if(yData[1] != 0)
+            colors.add(Color.parseColor("#ffb6c1"));
+        if(yData[2] != 0)
+            colors.add(Color.parseColor("#6495ed"));
+        if(yData[3] != 0)
+            colors.add(Color.parseColor("#eedd82"));
         pieDataSet.setColors(colors);
 
 
