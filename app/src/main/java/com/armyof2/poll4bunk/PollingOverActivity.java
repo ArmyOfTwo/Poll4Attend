@@ -131,6 +131,8 @@ public class PollingOverActivity extends AppCompatActivity{
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
 
         for (int i = 0; i < yData.length; i++){
+            if(yData[i] == 0)
+                xData[i] = "";
             yEntrys.add(new PieEntry(yData[i], xData[i]));
         }
 
