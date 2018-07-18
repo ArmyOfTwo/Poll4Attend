@@ -126,7 +126,7 @@ public class PollingOverActivity extends AppCompatActivity{
 
     public static void addDataSet(PieChart pieChart, int[] yData, String[] xData){
 
-        pieChart.setCenterText("Total Votes: " + totalpeeps + "\nVotes Made: " + m);
+        pieChart.setCenterText("Total Voters: " + totalpeeps + "\nVotes Made: " + m);
 
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
 

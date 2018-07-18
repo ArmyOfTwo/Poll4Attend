@@ -630,7 +630,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
 
         m = Integer.toString(Integer.parseInt(i)+Integer.parseInt(j)+Integer.parseInt(k)+Integer.parseInt(l));
-        pieChart.setCenterText("Total Votes: " + totalpeeps + "\nVotes Made: " + m);
+        pieChart.setCenterText("Total Voters: " + totalpeeps + "\nVotes Made: " + m);
 
         for (int i = 0; i < yData.length; i++){
             yEntrys.add(new PieEntry(yData[i], i));

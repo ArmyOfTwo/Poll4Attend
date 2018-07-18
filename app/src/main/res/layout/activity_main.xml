@@ -145,4 +145,19 @@
         android:textAlignment="center"
         android:textColor="@android:color/holo_purple" />
 
+    <Button
+        android:id="@+id/btno"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="340dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="75dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/circleshape"
+        android:text=""
+        android:textColor="#fff" />
+
+
 </RelativeLayout>
