@@ -39,7 +39,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
     private TextView mStatusTextView;
-    private TextView mDetailTextView;
     public static String userUid;
     private TextView welcomeView;
     private GoogleSignInAccount acc;
@@ -68,7 +67,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         // Views
         mStatusTextView = findViewById(R.id.status);
-        mDetailTextView = findViewById(R.id.detail);
         welcomeView = findViewById(R.id.tv_welcome);
 
         //anime
@@ -180,7 +178,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         progress.hide();
         if (user != null) {
             mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
             acc = GoogleSignIn.getLastSignedInAccount(this);
             if (acc != null) {
                 name0 = acc.getDisplayName();
@@ -200,7 +197,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         } else {
             mStatusTextView.setText(R.string.signed_out);
-            mDetailTextView.setText(null);
             userUid = null;
 
             welcomeView.startAnimation(out);

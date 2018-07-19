@@ -23,7 +23,9 @@
         android:layout_below="@+id/et_pollname"
         android:layout_marginTop="60dp"
         android:text="Enter Your Name:"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:textColor="@android:color/white"
+        />
 
     <EditText
         android:id="@+id/et_numofparti"
@@ -45,7 +47,8 @@
         android:layout_below="@+id/et_date"
         android:layout_marginTop="60dp"
         android:text="Enter Number of Participants:"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:textColor="@android:color/white"/>
 
     <EditText
         android:id="@+id/et_date"
@@ -67,7 +70,8 @@
         android:layout_below="@id/tv_name"
         android:layout_marginTop="60dp"
         android:text="Enter Date of Bunk:"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/tv_title"
@@ -77,8 +81,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:text="Create Poll4Bunk Server:"
-        android:textColor="@android:color/holo_green_light"
-        android:textSize="34sp" />
+        android:textColor="@color/PieChartGreen"
+        android:textSize="34sp"
+        />
 
     <TextView
         android:id="@+id/tv_pollname"
@@ -89,7 +94,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="80dp"
         android:text="Enter Title of Bunk:"
-        android:textSize="19sp" />
+        android:textSize="19sp"
+        android:textColor="@android:color/white"/>
 
     <EditText
         android:id="@+id/et_pollname"
@@ -110,10 +116,11 @@
         android:layout_below="@+id/et_numofparti"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:onClick="onCreateButtonClicked"
         android:text="CREATE"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/roundbutton"/>
 
     <TextView
         android:id="@+id/textView"
@@ -122,6 +129,6 @@
         android:layout_alignStart="@+id/tv_pollname"
         android:layout_below="@+id/tv_pollname"
         android:text="[This will serve as server identifier too, so keep it unique]"
-        android:textColor="@android:color/holo_purple"
+        android:textColor="@color/colorHint"
         android:textSize="10sp" />
 </RelativeLayout>

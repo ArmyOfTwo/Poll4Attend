@@ -21,7 +21,7 @@
         android:textAlignment="center"
         android:maxLines = "5"
         android:scrollbars = "horizontal"
-        android:textColor="@android:color/holo_purple" />
+        android:textColor="@color/lightGreen" />
 
     <TextView
         android:id="@+id/tv_badmin"
@@ -131,7 +131,8 @@
         android:onClick="onConfirmButtonClicked"
         android:text="Confirm"
         android:textColor="@android:color/white"
-        android:textSize="17sp" />
+        android:textSize="17sp"
+        android:background="@drawable/roundbutton"/>
 
     <TextView
         android:id="@+id/tv_cdtimer"
@@ -143,7 +144,7 @@
         android:layout_marginTop="3dp"
         android:text="$cdtimer"
         android:textAlignment="center"
-        android:textColor="@android:color/holo_purple" />
+        android:textColor="@color/lightGreen" />
 
    <!-- <Button
         android:id="@+id/btno"
