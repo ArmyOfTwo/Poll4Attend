@@ -191,6 +191,11 @@ public class MainActivity extends AppCompatActivity {
         bunkYes80 = new ArrayList<>();
         bunkUndec = new ArrayList<>();
 
+        BUNK_YES = new ArrayList<>();
+        BUNK_NO = new ArrayList<>();
+        BUNK_YES80 = new ArrayList<>();
+        BUNK_UNDEC = new ArrayList<>();
+
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference().child(SERVER_ID);
         myRef2 = database.getReference().child(SERVER_ID).child("YuserUIDs");
@@ -281,56 +286,52 @@ public class MainActivity extends AppCompatActivity {
                         public void onChildAdded(DataSnapshot dataSnapshot3, String s) {
                             String val = dataSnapshot3.getValue(String.class);
                             Log.d("TAG", "value = " + value);
-                            if(dataSnapshot.getKey().equals(dataSnapshot3.getKey())){
+                            if(dataSnapshot.getKey().equals(dataSnapshot3.getKey())) {
                                 if (value.equals("yes")) {
-                                    if(added.equals("no") && !name.equals(val))
+                                    if (added.equals("no") && !name.equals(val))
                                         bunkNo.remove(bunkNo.size() - 1);
-                                    else if(added.equals("yes80") && !name.equals(val))
+                                    else if (added.equals("yes80") && !name.equals(val))
                                         bunkYes80.remove(bunkYes80.size() - 1);
-                                    else if(added.equals("undec") && !name.equals(val))
+                                    else if (added.equals("undec") && !name.equals(val))
                                         bunkUndec.remove(bunkUndec.size() - 1);
                                     bunkYes.add(val);
                                     Log.d("TAG", "bunkYesAddedAdded = " + bunkYes);
                                     BUNK_YES = bunkYes;
                                     added = "yes";
-                                }
-                                else if (value.equals("no")) {
-                                    if(added.equals("yes") && !name.equals(val))
+                                } else if (value.equals("no")) {
+                                    if (added.equals("yes") && !name.equals(val))
                                         bunkYes.remove(bunkYes.size() - 1);
-                                    else if(added.equals("yes80") && !name.equals(val))
+                                    else if (added.equals("yes80") && !name.equals(val))
                                         bunkYes80.remove(bunkYes80.size() - 1);
-                                    else if(added.equals("undec") && !name.equals(val))
+                                    else if (added.equals("undec") && !name.equals(val))
                                         bunkUndec.remove(bunkUndec.size() - 1);
                                     bunkNo.add(val);
                                     Log.d("TAG", "bunkNoAddedAdded = " + bunkNo);
                                     BUNK_NO = bunkNo;
                                     added = "no";
-                                }
-                                else if (value.equals("yes80")) {
-                                    if(added.equals("no") && !name.equals(val))
+                                } else if (value.equals("yes80")) {
+                                    if (added.equals("no") && !name.equals(val))
                                         bunkNo.remove(bunkNo.size() - 1);
-                                    else if(added.equals("yes") && !name.equals(val))
+                                    else if (added.equals("yes") && !name.equals(val))
                                         bunkYes.remove(bunkYes.size() - 1);
-                                    else if(added.equals("undec") && !name.equals(val))
+                                    else if (added.equals("undec") && !name.equals(val))
                                         bunkUndec.remove(bunkUndec.size() - 1);
                                     bunkYes80.add(val);
                                     Log.d("TAG", "bunkYes80AddedAdded = " + bunkYes80);
                                     BUNK_YES80 = bunkYes80;
                                     added = "yes80";
-                                }
-                                else if (value.equals("undec")) {
-                                    if(added.equals("no") && !name.equals(val))
+                                } else if (value.equals("undec")) {
+                                    if (added.equals("no") && !name.equals(val))
                                         bunkNo.remove(bunkNo.size() - 1);
-                                    else if(added.equals("yes80") && !name.equals(val))
+                                    else if (added.equals("yes80") && !name.equals(val))
                                         bunkYes80.remove(bunkYes80.size() - 1);
-                                    else if(added.equals("yes") && !name.equals(val))
+                                    else if (added.equals("yes") && !name.equals(val))
                                         bunkYes.remove(bunkYes.size() - 1);
                                     bunkUndec.add(val);
                                     Log.d("TAG", "bunkUndecAddedAdded = " + bunkUndec);
                                     BUNK_UNDEC = bunkUndec;
                                     added = "undec";
                                 }
-
                             }
                         }
 
@@ -379,6 +380,7 @@ public class MainActivity extends AppCompatActivity {
                                     bunkYes.add(val);
                                     Log.d("TAG", "bunkYesChangedAdded = " + bunkYes);
                                     BUNK_YES = bunkYes;
+                                    voteHandler(value);
                                     Log.d("TAG", "bunkYESChangedAdded = " + BUNK_YES);
                                     added = "yes";
                                 } else if (value.equals("no")) {
@@ -391,6 +393,7 @@ public class MainActivity extends AppCompatActivity {
                                     bunkNo.add(val);
                                     Log.d("TAG", "bunkNoChangedAdded = " + bunkNo);
                                     BUNK_NO = bunkNo;
+                                    voteHandler(value);
                                     Log.d("TAG", "bunkNOChangedAdded = " + BUNK_NO);
                                     added = "no";
                                 } else if (value.equals("yes80")) {
@@ -403,6 +406,7 @@ public class MainActivity extends AppCompatActivity {
                                     bunkYes80.add(val);
                                     Log.d("TAG", "bunkYes80ChangedAdded = " + bunkYes80);
                                     BUNK_YES80 = bunkYes80;
+                                    voteHandler(value);
                                     Log.d("TAG", "bunkYES80ChangedAdded = " + BUNK_YES80);
                                     added = "yes80";
                                 } else if (value.equals("undec")) {
@@ -415,6 +419,7 @@ public class MainActivity extends AppCompatActivity {
                                     bunkUndec.add(val);
                                     Log.d("TAG", "bunkUndecChangedAdded = " + bunkUndec);
                                     BUNK_UNDEC = bunkUndec;
+                                    voteHandler(value);
                                     Log.d("TAG", "bunkUNDECChangedAdded = " + BUNK_UNDEC);
                                     added = "undec";
                                 }
@@ -725,6 +730,66 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(this, LaunchActivity.class);
         startActivity(intent);
+    }
+
+    public void voteHandler(String v){
+        if(v.equals("yes")){
+            Log.d("TAG", "voteHandler: yes");
+            for (int p = 0; p < BUNK_YES.size(); p++) {
+                if (BUNK_NO.contains(BUNK_YES.get(p))) {
+                    removeStringFromArraylist(BUNK_YES.get(p), BUNK_NO);
+                }
+                if (BUNK_YES80.contains(BUNK_YES.get(p))) {
+                    removeStringFromArraylist(BUNK_YES.get(p), BUNK_YES80);
+                }
+                if (BUNK_UNDEC.contains(BUNK_YES.get(p))) {
+                    removeStringFromArraylist(BUNK_YES.get(p), BUNK_UNDEC);
+                }
+            }
+        }
+        if(v.equals("no")){
+            Log.d("TAG", "voteHandler: no");
+            for (int p = 0; p < BUNK_NO.size(); p++) {
+                if (BUNK_YES.contains(BUNK_NO.get(p))) {
+                    removeStringFromArraylist(BUNK_NO.get(p), BUNK_YES);
+                }
+                if (BUNK_YES80.contains(BUNK_NO.get(p))) {
+                    removeStringFromArraylist(BUNK_NO.get(p), BUNK_YES80);
+                }
+                if (BUNK_UNDEC.contains(BUNK_NO.get(p))) {
+                    removeStringFromArraylist(BUNK_NO.get(p), BUNK_UNDEC);
+                }
+            }
+        }
+        if(v.equals("yes80")){
+            Log.d("TAG", "voteHandler: yes80");
+            for (int p = 0; p < BUNK_YES80.size(); p++) {
+                if (BUNK_YES.contains(BUNK_YES80.get(p))) {
+                    removeStringFromArraylist(BUNK_YES80.get(p), BUNK_YES);
+                }
+                if (BUNK_NO.contains(BUNK_YES80.get(p))) {
+                    removeStringFromArraylist(BUNK_YES80.get(p), BUNK_NO);
+                }
+                if (BUNK_UNDEC.contains(BUNK_YES80.get(p))) {
+                    removeStringFromArraylist(BUNK_YES80.get(p), BUNK_UNDEC);
+                }
+            }
+        }
+        if(v.equals("undec")){
+            Log.d("TAG", "voteHandler: undec");
+            for (int p = 0; p < BUNK_UNDEC.size(); p++) {
+                if (BUNK_YES.contains(BUNK_UNDEC.get(p))) {
+                    removeStringFromArraylist(BUNK_UNDEC.get(p), BUNK_YES);
+                }
+                if (BUNK_NO.contains(BUNK_UNDEC.get(p))) {
+                    removeStringFromArraylist(BUNK_UNDEC.get(p), BUNK_NO);
+                }
+                if (BUNK_YES80.contains(BUNK_UNDEC.get(p))) {
+                    removeStringFromArraylist(BUNK_UNDEC.get(p), BUNK_YES80);
+                }
+            }
+        }
+
     }
 
 }

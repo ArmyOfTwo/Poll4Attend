@@ -1,6 +1,7 @@
 package com.armyof2.poll4bunk;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +41,12 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private TextView mStatusTextView;
     private TextView mDetailTextView;
     public static String userUid;
+    private TextView welcomeView;
+    private GoogleSignInAccount acc;
+    private String name0;
+    private Animation in;
+    private Animation out;
+    private ProgressDialog progress;
 
 
     @Override
@@ -50,9 +60,23 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        //progress
+        progress = new ProgressDialog(this);
+        progress.setMessage("Signing into Poll4Bunk...");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);
+
         // Views
         mStatusTextView = findViewById(R.id.status);
         mDetailTextView = findViewById(R.id.detail);
+        welcomeView = findViewById(R.id.tv_welcome);
+
+        //anime
+        in = new AlphaAnimation(0.0f, 1.0f);
+        in.setDuration(5000);
+        out = new AlphaAnimation(1.0f, 0.0f);
+        out.setDuration(5000);
+
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -86,7 +110,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w("TAG", "Google sign in failed", e);
-                Toast.makeText(this, "Are you connected to network?", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Are you connected to the Internet?", Toast.LENGTH_SHORT).show();
                 updateUI(null);
             }
         }
@@ -95,6 +119,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d("TAG", "firebaseAuthWithGoogle:" + acct.getId());
         //showProgressDialog();
+        progress.show();
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -152,17 +177,52 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     private void updateUI(FirebaseUser user) {
         //hideProgressDialog();
+        progress.hide();
         if (user != null) {
             mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+            acc = GoogleSignIn.getLastSignedInAccount(this);
+            if (acc != null) {
+                name0 = acc.getDisplayName();
+                String[] strArray = name0.split(" ");
+                StringBuilder builder = new StringBuilder();
+                for (String s : strArray) {
+                    String cap = s.substring(0, 1).toUpperCase() + s.substring(1);
+                    builder.append(cap + " ");
+                }
+                welcomeView.setText("Welcome " + builder.toString() + "!");
+                welcomeView.startAnimation(in);
+            }
             userUid = user.getUid();
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
             userUid = null;
+
+            welcomeView.startAnimation(out);
+            out.setAnimationListener(new Animation.AnimationListener() {
+
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    welcomeView.setText("");
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+
+
+            });
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);

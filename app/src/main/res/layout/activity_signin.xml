@@ -44,6 +44,14 @@
             android:textColor="@android:color/white"
             tools:text="Firebase User ID: 123456789abc" />
 
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:textColor="@android:color/white"
+            android:theme="@style/ThemeOverlay.MyTitleText" />
+
     </LinearLayout>
 
 
@@ -55,12 +63,14 @@
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
             android:visibility="visible"
             app:buttonSize="wide"
-            tools:visibility="gone" />
+            tools:visibility="visible" />
 
         <LinearLayout
             android:id="@+id/sign_out_and_disconnect"

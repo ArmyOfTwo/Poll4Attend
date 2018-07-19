@@ -11,7 +11,7 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="23dp"
         android:text="Poll4Bunk v1.0"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
     <TextView
@@ -38,6 +38,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="35dp"
         android:text="Is used as a Polling System, particularly to commit Mass Bunks, may it be for University, School, etc. You can create your own Bunk Server, but one per user/account. The app also implements a Real-time Piechart, connected with a backend, for displaying live votes and also by whom. Go-on try the app out, and if you like it, don't forget to give s a feedback. Thank you."
+        android:textColor="@color/colorHint"
         android:textSize="16sp" />
 
     <TextView
@@ -49,7 +50,7 @@
         android:layout_below="@+id/textView7"
         android:layout_marginTop="32dp"
         android:text="Instructions: "
-        android:textColor="@android:color/background_dark"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         android:textSize="24sp" />
 
     <TextView
@@ -62,8 +63,8 @@
         android:layout_marginLeft="18dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="15dp"
-        android:maxLines = "10"
-        android:scrollbars = "vertical"
+        android:maxLines="10"
+        android:scrollbars="vertical"
 
         android:text="
 \n► Sign-in with a google account
@@ -79,6 +80,7 @@
 \n► Polling ends on the set-date but you can still view results
 \n► Server self-destructs one day after polling ends
 \n► Enjoy!"
+        android:textColor="@color/colorHint"
         android:textSize="18sp" />
 
 </RelativeLayout>

@@ -89,7 +89,7 @@ public class PollingOverActivity extends AppCompatActivity{
             }
         });
         //Bunk Result
-        android.util.Log.d("TAG", "run: i = " + i + "  k = " + k);
+        android.util.Log.d("TAG1", "run: i = " + i + "  k = " + k);
         if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 90){
             bunkRes.setText("Huge Success");
             bunkRes.setTextColor(getResources().getColor(R.color.PieChartGreen));
@@ -183,44 +183,44 @@ public class PollingOverActivity extends AppCompatActivity{
 
                         @Override
                         public void run() {
-                            android.util.Log.d("TAG", "PieChartValuesUpdated");
+                            android.util.Log.d("TAG1", "PieChartValuesUpdated");
                             yData = new int[]{Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
                             addDataSet(pieChart, yData, xData);
 
-                            android.util.Log.d("TAG", "run: i = " + i + "  m = " + totalpeeps);
+                            android.util.Log.d("TAG1", "run: i = " + i + "  m = " + totalpeeps);
                             //Bunk Result Update Realtime
                             if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 90){
                                 bunkRes.setText("Huge Success");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartGreen));
-                                android.util.Log.d("TAG", "HS");
+                                android.util.Log.d("TAG1", "HS");
                             } else if((((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 80) && (((float)Integer.parseInt(k)/Integer.parseInt(totalpeeps) * 100) >= 10)){
                                 bunkRes.setText("Huge Success");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartGreen));
-                                android.util.Log.d("TAG", "HS");
+                                android.util.Log.d("TAG1", "HS");
                             } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 80){
                                 bunkRes.setText("Success");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartGreen));
-                                android.util.Log.d("TAG", "S");
+                                android.util.Log.d("TAG1", "S");
                             } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 70){
                                 bunkRes.setText("Just Fine");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartYellow));
-                                android.util.Log.d("TAG", "JS");
+                                android.util.Log.d("TAG1", "JS");
                             } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 60){
                                 bunkRes.setText("Not that good");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartYellow));
-                                android.util.Log.d("TAG", "NTG");
+                                android.util.Log.d("TAG1", "NTG");
                             } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 50){
                                 bunkRes.setText("Not that good");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartYellow));
-                                android.util.Log.d("TAG", "NTG");
+                                android.util.Log.d("TAG1", "NTG");
                             } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 20) {
                                 bunkRes.setText("Failure");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartPink));
-                                android.util.Log.d("TAG", "F");
+                                android.util.Log.d("TAG1", "F");
                             } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 0) {
                                 bunkRes.setText("Huge Failure");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartPink));
-                                android.util.Log.d("TAG", "HF");
+                                android.util.Log.d("TAG1", "HF");
                             }
                         }
                     });

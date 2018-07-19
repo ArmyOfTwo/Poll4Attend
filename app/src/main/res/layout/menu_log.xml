@@ -20,7 +20,7 @@
         android:layout_marginStart="13dp"
         android:layout_marginTop="14dp"
         android:text="Release 1.3a:"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
     <TextView
@@ -36,7 +36,8 @@
 \n• Key input is now mandatory
 \n• Encryption algorithm complexed
 \n• Interrupt in cryption process on back press fixed
-\n• Key input parameter range updated" />
+\n• Key input parameter range updated"
+        android:textColor="@color/colorHint" />
 
     <TextView
         android:id="@+id/textView14"
@@ -52,7 +53,8 @@
 \n• Encryption algorithm updated
 \n• Cryption process wrapped in threads
 \n• Added copy username feature
-\n• Added copy password feature" />
+\n• Added copy password feature"
+        android:textColor="@color/colorHint" />
 
     <TextView
         android:id="@+id/textView"
@@ -63,7 +65,7 @@
         android:layout_below="@+id/textView15"
         android:layout_marginTop="53dp"
         android:text="Release 1.3:"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
     <TextView
@@ -75,7 +77,8 @@
         android:layout_below="@+id/textView12"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
-        android:text="• App created" />
+        android:text="• App created"
+        android:textColor="@color/colorHint" />
 
     <TextView
         android:id="@+id/textView12"
@@ -86,7 +89,7 @@
         android:layout_below="@+id/textView9"
         android:layout_marginTop="53dp"
         android:text="Alpha Release:"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
     <TextView
@@ -104,7 +107,8 @@
 \n• Added menu item: About
 \n• Added menu item: Change log
 \n• Horizontal scroll bar added to each record in list
-\n• Key input now only allows int" />
+\n• Key input now only allows int"
+        android:textColor="@color/colorHint" />
 
     <TextView
         android:id="@+id/textView6"
@@ -115,7 +119,7 @@
         android:layout_below="@+id/textView10"
         android:layout_marginTop="53dp"
         android:text="Release 1.1:"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
     <TextView
@@ -127,7 +131,7 @@
         android:layout_below="@+id/textView14"
         android:layout_marginTop="53dp"
         android:text="Release 1.2:"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
     <TextView
@@ -143,7 +147,8 @@
 \n• Switch now remembers state
 \n• Title is now mandatory
 \n• Removed auto-focus keyboard on edit text
-\n• Exit on back press at main activity" />
+\n• Exit on back press at main activity"
+        android:textColor="@color/colorHint" />
 </RelativeLayout>
 
 </ScrollView>
