@@ -261,7 +261,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 return true;
 
             case R.id.clog:
-                i = new Intent(this,Log.class);
+                i = new Intent(this, com.armyof2.poll4bunk.Log.class);
                 startActivity(i);
                 return true;
 

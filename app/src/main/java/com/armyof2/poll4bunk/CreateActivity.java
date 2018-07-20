@@ -90,10 +90,12 @@ public class CreateActivity extends FragmentActivity {
                         //Yes button clicked
                         myRef.child(userUid).setValue(dataMap);
                         startActivity(intent);
+                        finish();
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
                         startActivity(intent);
+                        finish();
                         //No button clicked
                         break;
                 }
@@ -118,7 +120,7 @@ public class CreateActivity extends FragmentActivity {
             int day = c.get(Calendar.DAY_OF_MONTH);
 
             // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), this, year, month, day);
+            return new DatePickerDialog(getActivity(), R.style.datepicker, this, year, month, day);
         }
 
         public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -164,8 +166,9 @@ public class CreateActivity extends FragmentActivity {
             myRef.child(userUid).setValue(dataMap);
             Log.d("TAG", "If exec");
             startActivity(intent);
+            finish();
         } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.AlertDialog);
             builder.setMessage("You have already created a server before, Overwrite?").setPositiveButton("Yes", dialogClickListener)
                     .setNegativeButton("No", dialogClickListener).show();
             Log.d("TAG", "Else exec");
