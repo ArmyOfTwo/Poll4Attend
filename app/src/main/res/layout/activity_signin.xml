@@ -56,15 +56,29 @@
         android:layout_weight="1"
         android:background="@color/grey_300">
 
-        <com.google.android.gms.common.SignInButton
+       <!-- <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="80dp"
             android:layout_marginRight="80dp"
+            android:background="@drawable/roundbutton"
             android:visibility="visible"
             app:buttonSize="wide"
+            tools:visibility="visible" /-->
+
+        <Button
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:background="@drawable/roundbutton"
+            android:drawableLeft="@drawable/goop"
+            android:text="Sign in with Google"
+            android:visibility="visible"
             tools:visibility="visible" />
 
         <LinearLayout
