@@ -63,7 +63,7 @@
         android:layout_centerHorizontal="false"
         android:layout_marginRight="40dp"
         android:text="$date"
-        android:textColor="@color/PieChartBlue"
+        android:textColor="@color/lightGreen"
         android:textSize="24sp" />
 
 

@@ -81,9 +81,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:text="Create Poll4Bunk Server:"
-        android:textColor="@color/PieChartGreen"
-        android:textSize="34sp"
-        />
+        android:textColor="@color/colorAccent"
+        android:textSize="34sp" />
 
     <TextView
         android:id="@+id/tv_pollname"
@@ -116,11 +115,11 @@
         android:layout_below="@+id/et_numofparti"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="170dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/roundbutton"
         android:onClick="onCreateButtonClicked"
         android:text="CREATE"
-        android:textSize="18sp"
-        android:background="@drawable/roundbutton"/>
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView"

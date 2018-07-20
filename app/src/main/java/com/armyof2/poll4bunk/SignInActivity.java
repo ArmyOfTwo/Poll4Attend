@@ -71,9 +71,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         //anime
         in = new AlphaAnimation(0.0f, 1.0f);
-        in.setDuration(5000);
+        in.setDuration(4000);
         out = new AlphaAnimation(1.0f, 0.0f);
-        out.setDuration(5000);
+        out.setDuration(3000);
 
 
         // Button listeners
