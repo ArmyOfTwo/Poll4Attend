@@ -15,43 +15,29 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="400dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="250dp"
         android:src="@drawable/poll_logotext_transparent" />
 
     <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/status"
+        style="@style/ThemeOverlay.MyTextDetail"
+        android:layout_above="@+id/tv_welcome"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/google_title_text"
+        android:layout_marginBottom="25dp"
+        android:text="@string/signed_out"
+        android:textColor="@android:color/white" />
+
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="120dp"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:theme="@style/ThemeOverlay.MyTitleText" />
-
-        <TextView
-            android:id="@+id/status"
-            style="@style/ThemeOverlay.MyTextDetail"
-            android:layout_below="@+id/title_text"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="@string/signed_out"
-            android:textColor="@android:color/white" />
-
-
-        <TextView
-            android:id="@+id/tv_welcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="false"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/status"
-            android:layout_marginTop="30dp"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:theme="@style/ThemeOverlay.MyTitleText" />
 
 
 

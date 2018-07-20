@@ -59,7 +59,7 @@
     <string name="firebase_status_fmt">Poll4Bunk User Id: %s</string>
     <string name="firebase_user_management">Poll4Bunk User Management</string>
 
-    <string name="google_status_fmt">Google User Id: %s</string>
+    <string name="google_status_fmt">Google ID - %s</string>
     <string name="google_title_text">Google Sign In</string>
 
     <string name="facebook_status_fmt">Facebook User: %s</string>
