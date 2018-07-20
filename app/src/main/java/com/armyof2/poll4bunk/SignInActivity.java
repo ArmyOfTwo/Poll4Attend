@@ -182,12 +182,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             if (acc != null) {
                 name0 = acc.getDisplayName();
                 String[] strArray = name0.split(" ");
-                StringBuilder builder = new StringBuilder();
-                for (String s : strArray) {
-                    String cap = s.substring(0, 1).toUpperCase() + s.substring(1);
-                    builder.append(cap + " ");
-                }
-                welcomeView.setText("Welcome " + builder.toString() + "!");
+                String cap = strArray[0].substring(0, 1).toUpperCase() + strArray[0].substring(1);
+                welcomeView.setText("Welcome " + cap + " !");
                 welcomeView.startAnimation(in);
             }
             userUid = user.getUid();
