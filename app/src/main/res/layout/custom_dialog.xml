@@ -39,7 +39,7 @@
         android:background="@drawable/roundbutton_blue"
         android:clickable="true"
         android:text="Okay"
-        android:textColor="#5d5d6b"
+        android:textColor="@color/rallyGreen"
         android:textSize="15dp"
         android:textStyle="bold" />
 

@@ -60,6 +60,7 @@
         android:layout_alignEnd="@+id/et_pollname"
         android:layout_alignStart="@+id/et_pollname"
         android:ems="10"
+        android:textColor="@color/colorPrimaryDark"
         android:inputType="date" />
 
     <TextView
