@@ -24,6 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Do you realy want to exit ?"
+        android:maxLines="7"
+        android:scrollbars="vertical"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="15dp" />
