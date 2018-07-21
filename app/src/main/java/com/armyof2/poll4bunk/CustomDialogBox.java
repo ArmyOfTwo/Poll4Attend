@@ -4,6 +4,7 @@ package com.armyof2.poll4bunk;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -39,6 +40,8 @@ public class CustomDialogBox extends Dialog implements
         setContentView(R.layout.custom_dialog);
         titlView = (TextView) findViewById(R.id.txt_dia);
         arrayView = (TextView) findViewById(R.id.txt_bunkers);
+        TextView tv = (TextView) findViewById(R.id.txt_bunkers);
+        tv.setMovementMethod(new ScrollingMovementMethod());
         if(posp == 0) {
             titlView.setText("People who voted for \n                'Yes':");
             sortAl(BUNK_YES);
