@@ -80,10 +80,10 @@ public class CustomDialogBox extends Dialog implements
 
     public void sortAl(ArrayList<String> arrayList) {
         if (arrayList == null)
-            sorted = "";
+            sorted = null;
         else {
             for (String l : arrayList) {
-                sorted = sorted + "\n" + l;
+                sorted = l + "\n" + sorted;
             }
         }
     }
