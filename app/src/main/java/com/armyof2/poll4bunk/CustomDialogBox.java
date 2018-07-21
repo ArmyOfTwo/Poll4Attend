@@ -42,6 +42,7 @@ public class CustomDialogBox extends Dialog implements
         arrayView = (TextView) findViewById(R.id.txt_bunkers);
         TextView tv = (TextView) findViewById(R.id.txt_bunkers);
         tv.setMovementMethod(new ScrollingMovementMethod());
+
         if(posp == 0) {
             titlView.setText("People who voted for \n                'Yes':");
             sortAl(BUNK_YES);
