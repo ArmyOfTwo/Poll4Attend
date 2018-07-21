@@ -85,7 +85,7 @@ public class LaunchActivity extends AppCompatActivity {
                     Title= strOut.substring(pos+11).split(",")[0];
                     Log.d("TAG", "Title = " + Title);
 
-                    if(Title.equals(serverName)){
+                    if(Title.equals(serverName) || Title.equals(serverName+"}")){
                         goodToast();
                         SERVER_ID = child.getKey();
                         myRef.child(SERVER_ID).child("Bunker's Name").child(userUid).setValue(name);
