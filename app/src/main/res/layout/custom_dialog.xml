@@ -44,7 +44,7 @@
         android:background="@drawable/roundbutton_blue"
         android:clickable="true"
         android:text="Okay"
-        android:textColor="@color/rallyGreen"
+        android:textColor="@color/lightGreen"
         android:textSize="15dp"
         android:textStyle="bold" />
 
