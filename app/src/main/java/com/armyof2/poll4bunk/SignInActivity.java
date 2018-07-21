@@ -3,6 +3,7 @@ package com.armyof2.poll4bunk;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,8 +82,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.proceed_button).setOnClickListener(this);
-
-
+        Button signInButton = (Button) findViewById(R.id.sign_in_button);
+        Typeface Roboto_Thin = Typeface.createFromAsset(getAssets(),  "fonts/Roboto-Thin.ttf");
+        signInButton.setTypeface(Roboto_Thin,Typeface.BOLD);
         mAuth = FirebaseAuth.getInstance();
 
     }
@@ -183,8 +186,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 name0 = acc.getDisplayName();
                 String[] strArray = name0.split(" ");
                 String cap = strArray[0].substring(0, 1).toUpperCase() + strArray[0].substring(1);
-                welcomeView.setText("Welcome " + cap + " !");
+                Typeface Roboto_Thin_Light_Italic = Typeface.createFromAsset(getAssets(),  "fonts/Roboto-ThinItalic.ttf");
+                welcomeView.setTypeface(Roboto_Thin_Light_Italic);
+                welcomeView.setText("Welcome, " + cap);
                 welcomeView.startAnimation(in);
+
             }
             userUid = user.getUid();
 
@@ -192,6 +198,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
 
         } else {
+            Typeface Roboto_Thin_Light = Typeface.createFromAsset(getAssets(),  "fonts/Roboto-ThinItalic.ttf");
+            mStatusTextView.setTypeface(Roboto_Thin_Light);
             mStatusTextView.setText(R.string.signed_out);
             userUid = null;
 
