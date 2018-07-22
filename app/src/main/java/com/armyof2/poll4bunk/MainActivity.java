@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.evernote.android.job.*;
 import com.github.mikephil.charting.charts.PieChart;
@@ -77,8 +78,10 @@ public class MainActivity extends AppCompatActivity {
     private String hasVoted = "yolo", added = "yolo";
     private CountDownTimer cdTimer;
     private long timeDifference = 0;
-    final long timeInterval = 30;
+    final long timeInterval = 10;
+    final long timeInterval2 = 2000;
     public static String servTitle;
+    private String bunkWait = "false";
 
     //------------------pie-----------------
     public static int[] yData = {Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
@@ -231,6 +234,12 @@ public class MainActivity extends AppCompatActivity {
                         servTitle = bunkServerStuff.get(2);
                     }
                     bunkServerVotes.add(value);
+                    if (dataSnapshot.getKey().equals("Bunk Wait")) {
+                        if (value.equals("true"))
+                            bunkWait = "true";
+                        else
+                            bunkWait = "false";
+                    }
                     if (dataSnapshot.getKey().equals("Yes")) {
                         i = value;
                         Log.d("TAG", "i = " + i);
@@ -251,6 +260,12 @@ public class MainActivity extends AppCompatActivity {
                 if(!dataSnapshot.getKey().equals("YuserUIDs") && !dataSnapshot.getKey().equals("Bunker's Name")) {
                     String value = dataSnapshot.getValue(String.class);
                     bunkServerVotes.add(value);
+                    if (dataSnapshot.getKey().equals("Bunk Wait")) {
+                        if (value.equals("true"))
+                            bunkWait = "true";
+                        else
+                            bunkWait = "false";
+                    }
                     if (dataSnapshot.getKey().equals("Yes"))
                         i = value;
                     if (dataSnapshot.getKey().equals("No"))
@@ -476,6 +491,8 @@ public class MainActivity extends AppCompatActivity {
         //scheduleJob();
         Thread thread = new Thread(runnable);
         thread.start();
+        Thread thread2 = new Thread(runnable2);
+        thread2.start();
     }
 
     public void removeStringFromArraylist(String s, ArrayList<String> list)
@@ -487,6 +504,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onConfirmButtonClicked(View view) {
+        if(bunkWait.equals("true")) {
+            Toast.makeText(this, "Wait!", Toast.LENGTH_SHORT).show();
+            return;
+        } else
+            myRef.child("Bunk Wait").setValue("true");
         switch (option){
             case 1:
                 int p = Integer.parseInt(i);
@@ -701,6 +723,29 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    Runnable runnable2 = new Runnable() {
+        public void run() {
+            while (true) {
+
+                try {
+                    Thread.sleep(timeInterval2);
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            Log.d("TAG", "Wait");
+                            myRef.child("Bunk Wait").setValue("false");
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
