@@ -207,9 +207,9 @@ public class CreateActivity extends FragmentActivity {
     public void adjustDisplayScale(Configuration configuration) {
         if (configuration != null) {
             Log.d("TAG", "adjustDisplayScale: " + configuration.densityDpi);
-            if(configuration.densityDpi >= 500)
+            if(configuration.densityDpi >= 485)
                 configuration.densityDpi = 500;
-            if(configuration.densityDpi >= 300)
+            else if(configuration.densityDpi >= 300)
                 configuration.densityDpi = 400;
             else if(configuration.densityDpi >= 100)
                 configuration.densityDpi = 200;
