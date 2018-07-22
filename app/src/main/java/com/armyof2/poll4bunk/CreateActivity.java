@@ -174,6 +174,11 @@ public class CreateActivity extends FragmentActivity {
         dataMap.put("Bunk Date", bunk.date);
         dataMap.put("Bunk Participants", bunk.num);
         dataMap.put("Bunker Admin", bunk.admin);
+        dataMap.put("Yes", "0");
+        dataMap.put("No", "0");
+        dataMap.put("Yes80", "0");
+        dataMap.put("Undec", "0");
+
 
         if (!serverExists) {
             myRef.child(userUid).setValue(dataMap);
