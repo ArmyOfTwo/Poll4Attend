@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
     private String hasVoted = "yolo", added = "yolo";
     private CountDownTimer cdTimer;
     private long timeDifference = 0;
-    final long timeInterval = 100;
+    final long timeInterval = 30;
     public static String servTitle;
 
     //------------------pie-----------------
@@ -379,12 +379,12 @@ public class MainActivity extends AppCompatActivity {
                             String val = dataSnapshot3.getValue(String.class);
                             if (dataSnapshot.getKey().equals(dataSnapshot3.getKey())) {
                                 if (value.equals("yes")) {
-                                    if (added.equals("no") && name.equals(val))
+                                    /*if (added.equals("no") && name.equals(val))
                                         removeStringFromArraylist(val, bunkNo);
                                     else if (added.equals("yes80") && name.equals(val))
                                         removeStringFromArraylist(val, bunkYes80);
                                     else if (added.equals("undec") && name.equals(val))
-                                        removeStringFromArraylist(val, bunkUndec);
+                                        removeStringFromArraylist(val, bunkUndec);*/
                                     bunkYes.add(val);
                                     Log.d("TAG", "bunkYesChangedAdded = " + bunkYes);
                                     BUNK_YES = bunkYes;
@@ -392,12 +392,12 @@ public class MainActivity extends AppCompatActivity {
                                     Log.d("TAG", "bunkYESChangedAdded = " + BUNK_YES);
                                     added = "yes";
                                 } else if (value.equals("no")) {
-                                    if (added.equals("yes") && name.equals(val))
+                                    /*if (added.equals("yes") && name.equals(val))
                                         removeStringFromArraylist(val, bunkYes);
                                     else if (added.equals("yes80") && name.equals(val))
                                         removeStringFromArraylist(val, bunkYes80);
                                     else if (added.equals("undec") && name.equals(val))
-                                        removeStringFromArraylist(val, bunkUndec);
+                                        removeStringFromArraylist(val, bunkUndec);*/
                                     bunkNo.add(val);
                                     Log.d("TAG", "bunkNoChangedAdded = " + bunkNo);
                                     BUNK_NO = bunkNo;
@@ -405,12 +405,12 @@ public class MainActivity extends AppCompatActivity {
                                     Log.d("TAG", "bunkNOChangedAdded = " + BUNK_NO);
                                     added = "no";
                                 } else if (value.equals("yes80")) {
-                                    if (added.equals("no") && name.equals(val))
+                                    /*if (added.equals("no") && name.equals(val))
                                         removeStringFromArraylist(val, bunkNo);
                                     else if (added.equals("yes") && name.equals(val))
                                         removeStringFromArraylist(val, bunkYes);
                                     else if (added.equals("undec") && name.equals(val))
-                                        removeStringFromArraylist(val, bunkUndec);
+                                        removeStringFromArraylist(val, bunkUndec);*/
                                     bunkYes80.add(val);
                                     Log.d("TAG", "bunkYes80ChangedAdded = " + bunkYes80);
                                     BUNK_YES80 = bunkYes80;
@@ -418,12 +418,12 @@ public class MainActivity extends AppCompatActivity {
                                     Log.d("TAG", "bunkYES80ChangedAdded = " + BUNK_YES80);
                                     added = "yes80";
                                 } else if (value.equals("undec")) {
-                                    if (added.equals("no") && name.equals(val))
+                                    /*if (added.equals("no") && name.equals(val))
                                         removeStringFromArraylist(val, bunkNo);
                                     else if (added.equals("yes80") && name.equals(val))
                                         removeStringFromArraylist(val, bunkYes80);
                                     else if (added.equals("yes") && name.equals(val))
-                                        removeStringFromArraylist(val, bunkYes);
+                                        removeStringFromArraylist(val, bunkYes);*/
                                     bunkUndec.add(val);
                                     Log.d("TAG", "bunkUndecChangedAdded = " + bunkUndec);
                                     BUNK_UNDEC = bunkUndec;
