@@ -38,6 +38,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -266,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
                         else
                             bunkWait = "false";
                     }
-                    if (dataSnapshot.getKey().equals("Yes"))
+                   /* if (dataSnapshot.getKey().equals("Yes"))
                         i = value;
                     if (dataSnapshot.getKey().equals("No"))
                         j = value;
@@ -274,7 +275,8 @@ public class MainActivity extends AppCompatActivity {
                         k = value;
                     if (dataSnapshot.getKey().equals("Undec"))
                         l = value;
-                    Log.d("TAG", "i = " + i + ", j = " + j + ", k = " + k + ", l = " + l);
+                    Log.d("TAG", "i = " + i + ", j = " + j + ", k = " + k + ", l = " + l); */
+
                 }
             }
 
@@ -286,6 +288,50 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                i = "0";
+                j = "0";
+                k = "0";
+                l = "0";
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    final String valu = child.getValue(String.class);
+                    Log.d("TAG", "valu = " + valu);
+                    if (valu.equals("yes")) {
+                        int tempo;
+                        tempo = Integer.parseInt(i);
+                        tempo++;
+                        i = Integer.toString(tempo);
+                    }
+                    if (valu.equals("no")) {
+                        int tempo;
+                        tempo = Integer.parseInt(j);
+                        tempo++;
+                        j = Integer.toString(tempo);
+                    }
+                    if (valu.equals("yes80")) {
+                        int tempo;
+                        tempo = Integer.parseInt(k);
+                        tempo++;
+                        k = Integer.toString(tempo);
+                    }
+                    if (valu.equals("undec")) {
+                        int tempo;
+                        tempo = Integer.parseInt(l);
+                        tempo++;
+                        l = Integer.toString(tempo);
+                    }
+                }
+                Log.d("TAG", "i = " + i + ", j = " + j + ", k = " + k + ", l = " + l);
             }
 
             @Override
@@ -382,11 +428,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(final DataSnapshot dataSnapshot, String s) {
+                Log.d("TAG", "change vote ");
                 final String value = dataSnapshot.getValue(String.class);
                 if (dataSnapshot.child("YuserUIDs").getKey().equals(userUid)) {
                     hasVoted = value;
                     Log.d("TAG", "onChildChanged : hasVoted = " + hasVoted);
                 }
+
 
                     myRef3.addChildEventListener(new ChildEventListener() {
                         @Override
@@ -712,7 +760,7 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void run() {
-                            Log.d("TAG", "PieChartValuesUpdated");
+                            Log.d("crap", "PieChartValuesUpdated");
                             yData = new int[]{Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
                             addDataSet(pieChart, yData);
                         }
@@ -734,7 +782,7 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void run() {
-                            Log.d("TAG", "Wait");
+                            Log.d("crap", "Wait");
                             myRef.child("Bunk Wait").setValue("false");
                         }
                     });
