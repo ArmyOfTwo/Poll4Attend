@@ -286,8 +286,12 @@ public class PollingOverActivity extends AppCompatActivity{
     }
 
     public void adjustDisplayScale(Configuration configuration) {
-        if (configuration != null && configuration.densityDpi != 1.0) {
-            configuration.densityDpi = 420;
+        if (configuration != null) {
+            android.util.Log.d("TAG", "adjustDisplayScale: " + configuration.densityDpi);
+            if(configuration.densityDpi >= 300)
+                configuration.densityDpi = 400;
+            else if(configuration.densityDpi >= 100)
+                configuration.densityDpi = 200;
             DisplayMetrics metrics = getResources().getDisplayMetrics();
             WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
             wm.getDefaultDisplay().getMetrics(metrics);
