@@ -85,7 +85,7 @@ public class CustomDialogBox extends Dialog implements
             for (String l : arrayList) {
                 sorted = l + "\n" + sorted;
             }
-            if(sorted.length()>=2)
+            if(sorted.length()>=1)
                 sorted=sorted.substring(0,sorted.length()-1);
         }
     }

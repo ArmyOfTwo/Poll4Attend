@@ -2,13 +2,16 @@ package com.armyof2.poll4bunk;
 
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -42,6 +45,8 @@ public class LaunchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        adjustFontScale( getResources().getConfiguration());
+        adjustDisplayScale( getResources().getConfiguration());
         setContentView(R.layout.activity_launch);
 
         pollName = (EditText) findViewById(R.id.et_pollname);
@@ -155,5 +160,26 @@ public class LaunchActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void adjustFontScale(Configuration configuration) {
+        if (configuration != null && configuration.fontScale != 1.0) {
+            configuration.fontScale = (float) 1.0;
+            DisplayMetrics metrics = getResources().getDisplayMetrics();
+            WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+            wm.getDefaultDisplay().getMetrics(metrics);
+            metrics.scaledDensity = configuration.fontScale * metrics.density;
+            this.getResources().updateConfiguration(configuration, metrics);
+        }
+    }
+
+    public void adjustDisplayScale(Configuration configuration) {
+        if (configuration != null && configuration.densityDpi != 1.0) {
+            configuration.densityDpi = 420;
+            DisplayMetrics metrics = getResources().getDisplayMetrics();
+            WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+            wm.getDefaultDisplay().getMetrics(metrics);
+            metrics.scaledDensity = configuration.densityDpi * metrics.density;
+            this.getResources().updateConfiguration(configuration, metrics);
+        }
+    }
 }
 

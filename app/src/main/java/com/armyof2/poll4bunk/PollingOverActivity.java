@@ -2,12 +2,15 @@ package com.armyof2.poll4bunk;
 
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -47,6 +50,8 @@ public class PollingOverActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        adjustFontScale( getResources().getConfiguration());
+        adjustDisplayScale( getResources().getConfiguration());
         setContentView(R.layout.activity_pollingover);
 
         pieChart = (PieChart) findViewById(R.id.piechart);
@@ -266,6 +271,28 @@ public class PollingOverActivity extends AppCompatActivity{
 
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void adjustFontScale(Configuration configuration) {
+        if (configuration != null && configuration.fontScale != 1.0) {
+            configuration.fontScale = (float) 1.0;
+            DisplayMetrics metrics = getResources().getDisplayMetrics();
+            WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+            wm.getDefaultDisplay().getMetrics(metrics);
+            metrics.scaledDensity = configuration.fontScale * metrics.density;
+            this.getResources().updateConfiguration(configuration, metrics);
+        }
+    }
+
+    public void adjustDisplayScale(Configuration configuration) {
+        if (configuration != null && configuration.densityDpi != 1.0) {
+            configuration.densityDpi = 420;
+            DisplayMetrics metrics = getResources().getDisplayMetrics();
+            WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+            wm.getDefaultDisplay().getMetrics(metrics);
+            metrics.scaledDensity = configuration.densityDpi * metrics.density;
+            this.getResources().updateConfiguration(configuration, metrics);
         }
     }
 }

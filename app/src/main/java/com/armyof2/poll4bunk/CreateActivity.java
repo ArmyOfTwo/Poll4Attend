@@ -5,12 +5,15 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -38,6 +42,7 @@ public class CreateActivity extends FragmentActivity {
     private HashMap<String, String> dataMap;
     private DialogInterface.OnClickListener dialogClickListener;
     private boolean serverExists = false;
+    private ArrayList<String> bunkTitle;
 
     private class BunkServer {
         String name;
@@ -51,6 +56,8 @@ public class CreateActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        adjustFontScale( getResources().getConfiguration());
+        adjustDisplayScale( getResources().getConfiguration());
         setContentView(R.layout.activity_create);
 
         bunkName = (EditText) findViewById(R.id.et_pollname);
@@ -65,6 +72,7 @@ public class CreateActivity extends FragmentActivity {
         bunkNum = (EditText) findViewById(R.id.et_numofparti);
         intent = new Intent(this, LaunchActivity.class);
         bunk = new BunkServer();
+        bunkTitle = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
 
@@ -73,6 +81,8 @@ public class CreateActivity extends FragmentActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChild(userUid))
                     serverExists = true;
+                for (DataSnapshot child : dataSnapshot.getChildren())
+                    bunkTitle.add(child.child("Bunk Title").getValue().toString());
             }
 
             @Override
@@ -138,6 +148,9 @@ public class CreateActivity extends FragmentActivity {
         if(bunk.name.equals("")){
             Toast.makeText(this, "You forgot to input title!", Toast.LENGTH_SHORT).show();
             return;
+        } else if (bunkTitle.contains(bunk.name)) {
+            Toast.makeText(this, "Server with same name already exists!", Toast.LENGTH_SHORT).show();
+            return;
         }
         if(bunk.name.contains(",")){
             Toast.makeText(this, "No commas allowed, sorry!", Toast.LENGTH_SHORT).show();
@@ -172,6 +185,28 @@ public class CreateActivity extends FragmentActivity {
             builder.setMessage("You have already created a server before, Overwrite?").setPositiveButton("Yes", dialogClickListener)
                     .setNegativeButton("No", dialogClickListener).show();
             Log.d("TAG", "Else exec");
+        }
+    }
+
+    public void adjustFontScale(Configuration configuration) {
+        if (configuration != null && configuration.fontScale != 1.0) {
+            configuration.fontScale = (float) 1.0;
+            DisplayMetrics metrics = getResources().getDisplayMetrics();
+            WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+            wm.getDefaultDisplay().getMetrics(metrics);
+            metrics.scaledDensity = configuration.fontScale * metrics.density;
+            this.getResources().updateConfiguration(configuration, metrics);
+        }
+    }
+
+    public void adjustDisplayScale(Configuration configuration) {
+        if (configuration != null && configuration.densityDpi != 1.0) {
+            configuration.densityDpi = 420;
+            DisplayMetrics metrics = getResources().getDisplayMetrics();
+            WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+            wm.getDefaultDisplay().getMetrics(metrics);
+            metrics.scaledDensity = configuration.densityDpi * metrics.density;
+            this.getResources().updateConfiguration(configuration, metrics);
         }
     }
 }

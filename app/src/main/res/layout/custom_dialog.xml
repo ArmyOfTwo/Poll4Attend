@@ -29,11 +29,11 @@
         android:layout_marginTop="20dp"
         android:maxLines="7"
         android:scrollbars="vertical"
-        android:verticalScrollbarPosition="left"
         android:text="Do you realy want to exit ?"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        android:verticalScrollbarPosition="left" />
 
 
     <Button
