@@ -4,6 +4,7 @@ package com.armyof2.poll4bunk;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -83,9 +84,36 @@ public class PollingOverActivity extends AppCompatActivity{
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-                posp = h.getX();
+                if(h.getX() == 0) {
+                    if (yData[0] != 0)
+                        posp = h.getX();
+                    else
+                        posp = h.getX() + 1;
+                }
+                if(h.getX() == 1) {
+                    if (yData[1] != 0)
+                        posp = h.getX();
+                    else
+                        posp = h.getX() + 1;
+                }
+                if(h.getX() == 2) {
+                    if (yData[2] != 0)
+                        posp = h.getX();
+                    else
+                        posp = h.getX() + 1;
+                }
+                if(h.getX() == 3) {
+                    if (yData[3] != 0)
+                        posp = h.getX();
+                    else
+                        posp = h.getX() + 1;
+                }
+
+                android.util.Log.d("TAG", "onValueSelected: " + e);
                 CustomDialogBox cdd=new CustomDialogBox(PollingOverActivity.this);
                 cdd.show();
+                cdd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
             }
 
             @Override
@@ -166,8 +194,8 @@ public class PollingOverActivity extends AppCompatActivity{
         legend.setPosition(Legend.LegendPosition.ABOVE_CHART_LEFT);
         legend.setOrientation(Legend.LegendOrientation.VERTICAL);
         legend.setTextColor(Color.WHITE);
-        legend.setFormSize(9);
-        legend.setTextSize(9);
+        legend.setFormSize(11);
+        legend.setTextSize(11);
         //legend.setYEntrySpace(10);
 
 
