@@ -566,9 +566,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(!connect) {
-            Intent t = new Intent(this, LaunchActivity.class);
             Toast.makeText(this, "Please re-fetch servers and join again", Toast.LENGTH_LONG).show();
-            startActivity(t);
             finish();
             return;
         }

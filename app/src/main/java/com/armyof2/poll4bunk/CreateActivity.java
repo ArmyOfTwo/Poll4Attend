@@ -42,7 +42,6 @@ public class CreateActivity extends FragmentActivity {
     private EditText bunkName;
     private EditText bunkNum;
     private EditText bunkAdmin;
-    private Intent intent;
     private FirebaseDatabase database;
     public static DatabaseReference myRef;
     private HashMap<String, String> dataMap;
@@ -77,7 +76,6 @@ public class CreateActivity extends FragmentActivity {
             }
         });
         bunkNum = (EditText) findViewById(R.id.et_numofparti);
-        intent = new Intent(this, LaunchActivity.class);
         bunk = new BunkServer();
         bunkTitle = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
@@ -107,12 +105,10 @@ public class CreateActivity extends FragmentActivity {
                     case DialogInterface.BUTTON_POSITIVE:
                         //Yes button clicked
                         myRef.child(userUid).setValue(dataMap);
-                        startActivity(intent);
                         finish();
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
-                        startActivity(intent);
                         finish();
                         //No button clicked
                         break;
@@ -182,7 +178,7 @@ public class CreateActivity extends FragmentActivity {
         Date d2;
         try {
             d2 = format.parse(bunk.date);
-            if(d1.getDate() >= d2.getDate())
+            if(d1.getTime() >= d2.getTime())
                 badDate = true;
         } catch (ParseException e) {
             e.printStackTrace();
@@ -214,8 +210,6 @@ public class CreateActivity extends FragmentActivity {
         if (!serverExists) {
             myRef.child(userUid).setValue(dataMap);
             Log.d("TAG", "If exec");
-
-            startActivity(intent);
             finish();
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.AlertDialog);

@@ -66,7 +66,7 @@ public class LaunchActivity extends AppCompatActivity {
 
         //progress
         progress = new ProgressDialog(this);
-        progress.setMessage("Connection to Server...");
+        progress.setMessage("Connecting to Server...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.setCanceledOnTouchOutside(false);
@@ -96,6 +96,7 @@ public class LaunchActivity extends AppCompatActivity {
             Toast.makeText(this, "Please specify the server name", Toast.LENGTH_SHORT).show();
             return;
         }
+        progress.setMessage("Connecting to Server...");
         progress.show();
         final Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask(){
