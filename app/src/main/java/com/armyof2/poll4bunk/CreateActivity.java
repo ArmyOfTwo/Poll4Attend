@@ -3,9 +3,12 @@ package com.armyof2.poll4bunk;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -24,8 +27,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import static com.armyof2.poll4bunk.SignInActivity.userUid;
@@ -43,6 +49,7 @@ public class CreateActivity extends FragmentActivity {
     private DialogInterface.OnClickListener dialogClickListener;
     private boolean serverExists = false;
     private ArrayList<String> bunkTitle;
+    private boolean badDate = false;
 
     private class BunkServer {
         String name;
@@ -87,6 +94,7 @@ public class CreateActivity extends FragmentActivity {
 
             @Override
             public void onCancelled(DatabaseError error) {
+
                 Log.w("TAG", "Failed to read value.", error.toException());
             }
         });
@@ -169,6 +177,24 @@ public class CreateActivity extends FragmentActivity {
             return;
         }
 
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date d1 = Calendar.getInstance().getTime();
+        Date d2;
+        try {
+            d2 = format.parse(bunk.date);
+            if(d1.getDate() >= d2.getDate())
+                badDate = true;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if(badDate) {
+            Toast.makeText(this, "Date must be at least one one day after", Toast.LENGTH_SHORT).show();
+            badDate = false;
+            return;
+        }
+
+
         dataMap = new HashMap<String, String>();
         dataMap.put("Bunk Title", bunk.name);
         dataMap.put("Bunk Date", bunk.date);
@@ -180,9 +206,15 @@ public class CreateActivity extends FragmentActivity {
         dataMap.put("Undec", "0");
 
 
+        if(!isNetworkAvailable(this)) {
+            Toast.makeText(this, "Check your internet connection", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (!serverExists) {
             myRef.child(userUid).setValue(dataMap);
             Log.d("TAG", "If exec");
+
             startActivity(intent);
             finish();
         } else {
@@ -191,6 +223,21 @@ public class CreateActivity extends FragmentActivity {
                     .setNegativeButton("No", dialogClickListener).show();
             Log.d("TAG", "Else exec");
         }
+    }
+
+    public static boolean isNetworkAvailable(Context con) {
+        try {
+            ConnectivityManager cm = (ConnectivityManager) con
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+
+            if (networkInfo != null && networkInfo.isConnected()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public void adjustFontScale(Configuration configuration) {

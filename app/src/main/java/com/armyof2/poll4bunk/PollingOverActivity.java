@@ -47,6 +47,7 @@ public class PollingOverActivity extends AppCompatActivity{
     int timeInterval = 200;
     private String[] xData = {"Yes", "No", "Yes if 80%", "Not decided"};
     private TextView bunkRes;
+    private boolean stop = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,7 +209,7 @@ public class PollingOverActivity extends AppCompatActivity{
 
     Runnable runnable = new Runnable() {
         public void run() {
-            while (true) {
+            while (!stop) {
 
                 try {
                     Thread.sleep(timeInterval);
@@ -267,9 +268,16 @@ public class PollingOverActivity extends AppCompatActivity{
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, LaunchActivity.class);
-        startActivity(intent);
+        finish();
     }
+
+    @Override
+    protected void onDestroy() {
+        stop = true;
+        android.util.Log.d("TAG", "onDestroy: called");
+        super.onDestroy();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

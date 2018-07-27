@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/text_input_layout2"
+        android:layout_alignStart="@+id/text_input_layout2"
+        android:layout_below="@+id/text_input_layout2"
+        android:layout_marginTop="50dp"
+        android:textColorHint="@color/colorHint">
 
     <EditText
         android:id="@+id/et_bunkername"
@@ -12,11 +24,37 @@
         android:layout_below="@+id/et_pollname"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="Enter Your Name..."
+        android:hint="Name"
         android:editable="false"
         android:focusable="false"
         android:inputType="textPersonName"
         android:textColorHint="@color/colorHint"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_input_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="65dp"
+        android:textColorHint="@color/colorHint">
+
+    <EditText
+        android:id="@+id/et_pollname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="Bunk Title"
+        android:textColorHint="@color/colorHint"
+        android:inputType="textPersonName" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/butt_create"
@@ -46,7 +84,7 @@
         android:id="@+id/butt_join"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_bunkername"
+        android:layout_below="@+id/text_input_layout"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="70dp"
         android:layout_marginRight="70dp"
@@ -56,18 +94,5 @@
         android:text="JOIN"
         android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/et_pollname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="65dp"
-        android:ems="10"
-        android:hint="Enter Bunk Title..."
-        android:textColorHint="@color/colorHint"
-        android:inputType="textPersonName" />
 
 </RelativeLayout>

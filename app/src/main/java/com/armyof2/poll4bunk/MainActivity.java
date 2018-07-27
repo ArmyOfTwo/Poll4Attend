@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
     final long timeInterval2 = 2000;
     public static String servTitle;
     private String bunkWait = "false";
+    private boolean stop = false;
+    private boolean connect = true;
+    private boolean ov = true;
+    private boolean dest = true;
+
 
     //------------------pie-----------------
     public static int[] yData = {Integer.parseInt(i), Integer.parseInt(j), Integer.parseInt(k), Integer.parseInt(l)};
@@ -552,6 +559,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onConfirmButtonClicked(View view) {
+        if(!isNetworkAvailable(this)) {
+            Toast.makeText(this, "Are you connected to the internet?", Toast.LENGTH_SHORT).show();
+            connect = false;
+            return;
+        }
+
+        if(!connect) {
+            Intent t = new Intent(this, LaunchActivity.class);
+            Toast.makeText(this, "Please re-fetch servers and join again", Toast.LENGTH_LONG).show();
+            startActivity(t);
+            finish();
+            return;
+        }
+
+
         /*if(bunkWait.equals("true")) {
             Toast.makeText(this, "Wait!", Toast.LENGTH_SHORT).show();
             return;
@@ -696,14 +718,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void over(){
-        Intent i = new Intent(this, PollingOverActivity.class);
-        startActivity(i);
+        if(ov) {
+            Intent i = new Intent(this, PollingOverActivity.class);
+            startActivity(i);
+            finish();
+            ov = false;
+        }
     }
 
     public void destroy(){
-        myRef.removeValue();
-        Intent i = new Intent(this, LaunchActivity.class);
-        startActivity(i);
+        if(dest) {
+            myRef.removeValue();
+            Intent i = new Intent(this, LaunchActivity.class);
+            startActivity(i);
+            finish();
+            dest = false;
+        }
     }
 
     //--------------------------pie---------------------------------------------
@@ -752,7 +782,7 @@ public class MainActivity extends AppCompatActivity {
 
     Runnable runnable = new Runnable() {
         public void run() {
-            while (true) {
+            while (!stop) {
 
                 try {
                     Thread.sleep(timeInterval);
@@ -771,6 +801,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    protected void onDestroy() {
+        stop = true;
+        Log.d("TAG", "onDestroy: called");
+        super.onDestroy();
+    }
 
     /*Runnable runnable2 = new Runnable() {
         public void run() {
@@ -793,6 +830,20 @@ public class MainActivity extends AppCompatActivity {
         }
     };*/
 
+    public static boolean isNetworkAvailable(Context con) {
+        try {
+            ConnectivityManager cm = (ConnectivityManager) con
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+
+            if (networkInfo != null && networkInfo.isConnected()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
 
     @Override
@@ -829,8 +880,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, LaunchActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void voteHandler(String v){

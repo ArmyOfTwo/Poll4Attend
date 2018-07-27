@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -51,6 +52,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private Animation in;
     private Animation out;
     private ProgressDialog progress;
+    private Boolean exit = false;
+
 
 
     @Override
@@ -244,6 +247,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         } else if (i == R.id.proceed_button) {
             Intent intent = new Intent(this, LaunchActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -279,6 +283,26 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
+
+    }
+
+
     public void adjustFontScale(Configuration configuration) {
         if (configuration != null && configuration.fontScale != 1.0) {
             configuration.fontScale = (float) 1.0;
@@ -291,6 +315,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void adjustDisplayScale(Configuration configuration) {
+        DisplayMetrics metrics2 = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getRealMetrics(metrics2);
+        Log.d("TAG", "adjustDisplayScale: " + metrics2.densityDpi);
+
         if (configuration != null) {
             Log.d("TAG", "adjustDisplayScale: " + configuration.densityDpi);
             if(configuration.densityDpi >= 485)

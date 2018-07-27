@@ -1,8 +1,12 @@
 package com.armyof2.poll4bunk;
 
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -24,6 +28,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import static com.armyof2.poll4bunk.SignInActivity.userUid;
 
 
@@ -38,8 +46,10 @@ public class LaunchActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private String serverName, strOut, strFinal[];
     private Toast mToast;
+    private ProgressDialog progress;
     private GoogleSignInAccount acc;
     public static String name2;
+    private int count = 0;
 
 
     @Override
@@ -51,9 +61,16 @@ public class LaunchActivity extends AppCompatActivity {
 
         pollName = (EditText) findViewById(R.id.et_pollname);
         bunkerName = (EditText) findViewById(R.id.et_bunkername);
-
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
+
+        //progress
+        progress = new ProgressDialog(this);
+        progress.setMessage("Connection to Server...");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);
+        progress.setCanceledOnTouchOutside(false);
+
         mToast = Toast.makeText( this  , "" , Toast.LENGTH_SHORT );
 
         acc = GoogleSignIn.getLastSignedInAccount(this);
@@ -67,9 +84,36 @@ public class LaunchActivity extends AppCompatActivity {
             }
             bunkerName.setText(builder.toString());
         }
+
     }
 
     public void onJoinButtonClicked(View view) {
+        if(!isNetworkAvailable(this)) {
+            Toast.makeText(this, "Are you connected to the internet?", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(pollName.getText().toString().equals("")){
+            Toast.makeText(this, "Please specify the server name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        progress.show();
+        final Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask(){
+            public void run() {
+                count++;
+                Log.d("TAG", "count: " + count);
+                if(count == 7) {
+                    progress.setMessage("Re-fetching servers...");
+                } else if(count == 25) {
+                    progress.setMessage("Re-fetching servers, this may take a while");
+                } else if(count == 45) {
+                    progress.setMessage("Do not panic!, if it looks stuck");
+                }
+                if(count == 50)
+                    timer.cancel();
+            }
+        }, new Date(), 1000);
+        myRef = database.getReference();
         serverName = pollName.getText().toString();
         intent = new Intent(this, MainActivity.class);
         name = bunkerName.getText().toString();
@@ -82,6 +126,8 @@ public class LaunchActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    progress.hide();
+                    timer.cancel();
                     Log.d("TAG", "Child = " + child.getValue().toString());
                     // child
                     strOut = child.getValue().toString();
@@ -105,6 +151,7 @@ public class LaunchActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+        //progress.hide();
     }
 
     public void onCreateButtonClicked(View view) {
@@ -154,10 +201,27 @@ public class LaunchActivity extends AppCompatActivity {
         }
     }
 
+    public static boolean isNetworkAvailable(Context con) {
+        try {
+            ConnectivityManager cm = (ConnectivityManager) con
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+
+            if (networkInfo != null && networkInfo.isConnected()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, SignInActivity.class);
-        startActivity(intent);
+        Intent in = new Intent(this, SignInActivity.class);
+        startActivity(in);
+        finish();
     }
 
     public void adjustFontScale(Configuration configuration) {

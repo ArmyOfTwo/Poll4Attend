@@ -10,7 +10,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="23dp"
-        android:text="Poll4Bunk v1.0"
+        android:text="Poll4Bunk v1.1"
         android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
