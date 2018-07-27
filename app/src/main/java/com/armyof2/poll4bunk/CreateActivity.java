@@ -5,7 +5,6 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -40,7 +39,7 @@ public class CreateActivity extends FragmentActivity {
 
     static EditText bunkDate;
     private EditText bunkName;
-    private EditText bunkNum;
+    static EditText bunkNum;
     private EditText bunkAdmin;
     private FirebaseDatabase database;
     public static DatabaseReference myRef;
@@ -80,6 +79,8 @@ public class CreateActivity extends FragmentActivity {
         bunkTitle = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
+
+
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -140,6 +141,7 @@ public class CreateActivity extends FragmentActivity {
         public void onDateSet(DatePicker view, int year, int month, int day) {
             // Do something with the date chosen by the user
             bunkDate.setText(day + "/" + (month + 1) + "/" + year);
+            bunkNum.requestFocus();
         }
     }
 
@@ -185,7 +187,7 @@ public class CreateActivity extends FragmentActivity {
         }
 
         if(badDate) {
-            Toast.makeText(this, "Date must be at least one one day after", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Date must be at least one day after", Toast.LENGTH_SHORT).show();
             badDate = false;
             return;
         }
