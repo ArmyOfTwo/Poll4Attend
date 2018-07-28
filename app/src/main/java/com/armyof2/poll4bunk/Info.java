@@ -38,6 +38,7 @@ public class Info extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.home:
                 Intent i = new Intent(this,SignInActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
                 finish();
                 return true;
