@@ -1,4 +1,4 @@
-package com.armyof2.poll4bunk;
+package com.armyof2.poll4attend;
 
 
 import android.app.Activity;
@@ -12,11 +12,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import static com.armyof2.poll4bunk.MainActivity.BUNK_NO;
-import static com.armyof2.poll4bunk.MainActivity.BUNK_UNDEC;
-import static com.armyof2.poll4bunk.MainActivity.BUNK_YES;
-import static com.armyof2.poll4bunk.MainActivity.BUNK_YES80;
-import static com.armyof2.poll4bunk.MainActivity.posp;
+import static com.armyof2.poll4attend.MainActivity.BUNK_NO;
+import static com.armyof2.poll4attend.MainActivity.BUNK_UNDEC;
+import static com.armyof2.poll4attend.MainActivity.BUNK_YES;
+import static com.armyof2.poll4attend.MainActivity.BUNK_YES80;
+import static com.armyof2.poll4attend.MainActivity.posp;
 
 public class CustomDialogBox extends Dialog implements
         android.view.View.OnClickListener {

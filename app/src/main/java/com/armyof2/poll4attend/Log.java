@@ -1,28 +1,25 @@
-package com.armyof2.poll4bunk;
+package com.armyof2.poll4attend;
+
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.TextView;
 
-public class Info extends AppCompatActivity {
-    TextView ins;
+public class Log extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         adjustFontScale( getResources().getConfiguration());
         adjustDisplayScale( getResources().getConfiguration());
-        setContentView(R.layout.menu_info);
-        ins = (TextView) findViewById(R.id.textView11);
-        ins.setMovementMethod(new ScrollingMovementMethod());
+        setContentView(R.layout.menu_log);
+
     }
 
     @Override
@@ -43,7 +40,7 @@ public class Info extends AppCompatActivity {
                 finish();
                 return true;
 
-            case R.id.info:
+            case R.id.about:
                 i = new Intent(this,Info.class);
                 startActivity(i);
                 finish();

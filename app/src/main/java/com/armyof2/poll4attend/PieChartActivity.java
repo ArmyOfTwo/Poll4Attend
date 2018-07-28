@@ -1,9 +1,8 @@
-package com.armyof2.poll4bunk;
+package com.armyof2.poll4attend;
 
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.evernote.android.job.Job;
@@ -11,18 +10,18 @@ import com.evernote.android.job.JobRequest;
 
 import java.util.ArrayList;
 
-import static com.armyof2.poll4bunk.MainActivity.BUNK_NO;
-import static com.armyof2.poll4bunk.MainActivity.BUNK_UNDEC;
-import static com.armyof2.poll4bunk.MainActivity.BUNK_YES;
-import static com.armyof2.poll4bunk.MainActivity.BUNK_YES80;
-import static com.armyof2.poll4bunk.MainActivity.addDataSet;
-import static com.armyof2.poll4bunk.MainActivity.i;
-import static com.armyof2.poll4bunk.MainActivity.j;
-import static com.armyof2.poll4bunk.MainActivity.k;
-import static com.armyof2.poll4bunk.MainActivity.l;
-import static com.armyof2.poll4bunk.MainActivity.pieChart;
-import static com.armyof2.poll4bunk.MainActivity.x;
-import static com.armyof2.poll4bunk.MainActivity.yData;
+import static com.armyof2.poll4attend.MainActivity.BUNK_NO;
+import static com.armyof2.poll4attend.MainActivity.BUNK_UNDEC;
+import static com.armyof2.poll4attend.MainActivity.BUNK_YES;
+import static com.armyof2.poll4attend.MainActivity.BUNK_YES80;
+import static com.armyof2.poll4attend.MainActivity.addDataSet;
+import static com.armyof2.poll4attend.MainActivity.i;
+import static com.armyof2.poll4attend.MainActivity.j;
+import static com.armyof2.poll4attend.MainActivity.k;
+import static com.armyof2.poll4attend.MainActivity.l;
+import static com.armyof2.poll4attend.MainActivity.pieChart;
+import static com.armyof2.poll4attend.MainActivity.x;
+import static com.armyof2.poll4attend.MainActivity.yData;
 
 
 public class PieChartActivity extends Job {

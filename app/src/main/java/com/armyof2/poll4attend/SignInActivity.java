@@ -1,4 +1,4 @@
-package com.armyof2.poll4bunk;
+package com.armyof2.poll4attend;
 
 
 import android.app.ProgressDialog;
@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -274,7 +273,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 return true;
 
             case R.id.clog:
-                i = new Intent(this, com.armyof2.poll4bunk.Log.class);
+                i = new Intent(this, com.armyof2.poll4attend.Log.class);
                 startActivity(i);
                 return true;
 

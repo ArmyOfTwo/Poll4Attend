@@ -1,4 +1,4 @@
-package com.armyof2.poll4bunk;
+package com.armyof2.poll4attend;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +28,6 @@ import com.evernote.android.job.*;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.LegendEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -46,16 +45,12 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static com.armyof2.poll4bunk.LaunchActivity.SERVER_ID;
-import static com.armyof2.poll4bunk.LaunchActivity.name;
-import static com.armyof2.poll4bunk.PieChartActivity.scheduleJob;
-import static com.armyof2.poll4bunk.SignInActivity.userUid;
+import static com.armyof2.poll4attend.LaunchActivity.SERVER_ID;
+import static com.armyof2.poll4attend.SignInActivity.userUid;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference myRef, myRef2, myRef3;
     private ArrayList<String> bunkServerStuff;
     private ArrayList<String> bunkServerVotes;
-    private RadioButton r1, r2, r3, r4;
+    private RadioButton r1, r2;
     private String hasVoted = "yolo", added = "yolo";
     private CountDownTimer cdTimer;
     private long timeDifference = 0;
@@ -160,16 +155,12 @@ public class MainActivity extends AppCompatActivity {
         adminView = (TextView) findViewById(R.id.tv_admin);
         r1 = (RadioButton) findViewById(R.id.rad_op1);
         r2 = (RadioButton) findViewById(R.id.rad_op2);
-        r3 = (RadioButton) findViewById(R.id.rad_op3);
-        r4 = (RadioButton) findViewById(R.id.rad_op4);
 
         r1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 option = 1;
                 r1.setChecked(true);
                 r2.setChecked(false);
-                r3.setChecked(false);
-                r4.setChecked(false);
             }
         });
 
@@ -178,30 +169,9 @@ public class MainActivity extends AppCompatActivity {
                 option = 2;
                 r1.setChecked(false);
                 r2.setChecked(true);
-                r3.setChecked(false);
-                r4.setChecked(false);
             }
         });
 
-        r3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                option = 3;
-                r1.setChecked(false);
-                r2.setChecked(false);
-                r3.setChecked(true);
-                r4.setChecked(false);
-            }
-        });
-
-        r4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                option = 4;
-                r1.setChecked(false);
-                r2.setChecked(false);
-                r3.setChecked(false);
-                r4.setChecked(true);
-            }
-        });
 
         bunkServerStuff = new ArrayList<>();
         bunkServerVotes = new ArrayList<>();
@@ -868,7 +838,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.clog:
-                i = new Intent(this, com.armyof2.poll4bunk.Log.class);
+                i = new Intent(this, com.armyof2.poll4attend.Log.class);
                 startActivity(i);
                 return true;
 

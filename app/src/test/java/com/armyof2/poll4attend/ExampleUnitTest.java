@@ -1,4 +1,4 @@
-package com.armyof2.poll4bunk;
+package com.armyof2.poll4attend;
 
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.armyof2.poll4bunk">
+    package="com.armyof2.poll4attend">
 
     <application
         android:allowBackup="true"
@@ -10,32 +10,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:configChanges="fontScale|density">
-        <activity android:name=".MainActivity"
+        <activity android:name="com.armyof2.poll4attend.MainActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|fontScale|screenSize">
 
         </activity>
-        <activity android:name=".LaunchActivity"
+        <activity android:name="com.armyof2.poll4attend.LaunchActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden">
         </activity>
-        <activity android:name=".Info"
+        <activity android:name="com.armyof2.poll4attend.Info"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden">
         </activity>
-        <activity android:name=".Log"
+        <activity android:name="com.armyof2.poll4attend.Log"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden">
         </activity>
-        <activity android:name=".CreateActivity"
+        <activity android:name="com.armyof2.poll4attend.CreateActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden">
         </activity>
-        <activity android:name=".PollingOverActivity"
+        <activity android:name="com.armyof2.poll4attend.PollingOverActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden">
         </activity>
-        <activity android:name=".SplashActivity"
+        <activity android:name="com.armyof2.poll4attend.SplashActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/splash">
@@ -45,7 +45,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignInActivity"
+        <activity android:name="com.armyof2.poll4attend.SignInActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden">
         </activity>

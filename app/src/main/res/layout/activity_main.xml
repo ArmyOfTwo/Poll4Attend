@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF42424A"
-    tools:context="com.armyof2.poll4bunk.MainActivity">
+    tools:context="com.armyof2.poll4attend.MainActivity">
 
 
     <TextView
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/rad_op2"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="Would you like to participate in Mass Bunk on:  "
@@ -71,13 +71,13 @@
         android:id="@+id/rad_op1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/rad_op3"
-        android:layout_alignStart="@+id/tv_admin"
-        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/butt_sendop"
+        android:layout_alignStart="@+id/butt_sendop"
+        android:layout_marginBottom="60dp"
         android:buttonTint="@color/PieChartGreen"
-        android:text="Yes! Count me in!"
+        android:text="Yes"
         android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        android:textSize="24sp" />
 
     <RadioButton
         android:id="@+id/rad_op2"
@@ -85,37 +85,11 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/rad_op1"
         android:layout_alignBottom="@+id/rad_op1"
-        android:layout_alignStart="@+id/rad_op1"
-        android:layout_marginLeft="205dp"
+        android:layout_alignEnd="@+id/butt_sendop"
         android:buttonTint="@color/PieChartPink"
-        android:text="No, not interested"
+        android:text="No"
         android:textColor="@android:color/white"
-        android:textSize="14sp" />
-
-
-    <RadioButton
-        android:id="@+id/rad_op3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/rad_op4"
-        android:layout_alignBottom="@+id/rad_op4"
-        android:layout_alignStart="@+id/rad_op1"
-        android:buttonTint="@color/PieChartBlue"
-        android:text="Yes.. if 80% or more are in"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
-
-    <RadioButton
-        android:id="@+id/rad_op4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/butt_sendop"
-        android:layout_alignStart="@+id/rad_op2"
-        android:layout_marginBottom="40dp"
-        android:buttonTint="@color/PieChartYellow"
-        android:text="Not decided yet"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        android:textSize="24sp" />
 
 
     <Button

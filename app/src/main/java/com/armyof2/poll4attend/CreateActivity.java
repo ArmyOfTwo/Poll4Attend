@@ -1,4 +1,4 @@
-package com.armyof2.poll4bunk;
+package com.armyof2.poll4attend;
 
 
 import android.app.DatePickerDialog;
@@ -33,7 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
-import static com.armyof2.poll4bunk.SignInActivity.userUid;
+import static com.armyof2.poll4attend.SignInActivity.userUid;
 
 public class CreateActivity extends FragmentActivity {
 

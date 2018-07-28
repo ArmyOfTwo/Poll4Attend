@@ -1,4 +1,4 @@
-package com.armyof2.poll4bunk;
+package com.armyof2.poll4attend;
 
 
 import android.app.ProgressDialog;
@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.armyof2.poll4bunk.SignInActivity.userUid;
+import static com.armyof2.poll4attend.SignInActivity.userUid;
 
 
 public class LaunchActivity extends AppCompatActivity {
@@ -193,7 +193,7 @@ public class LaunchActivity extends AppCompatActivity {
                 return true;
 
             case R.id.clog:
-                i = new Intent(this, com.armyof2.poll4bunk.Log.class);
+                i = new Intent(this, com.armyof2.poll4attend.Log.class);
                 startActivity(i);
                 return true;
 

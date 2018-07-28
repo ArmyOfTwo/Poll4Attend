@@ -1,4 +1,4 @@
-package com.armyof2.poll4bunk;
+package com.armyof2.poll4attend;
 
 
 import android.content.Intent;
@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
@@ -28,15 +27,14 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import static com.armyof2.poll4bunk.MainActivity.addDataSet;
-import static com.armyof2.poll4bunk.MainActivity.i;
-import static com.armyof2.poll4bunk.MainActivity.j;
-import static com.armyof2.poll4bunk.MainActivity.k;
-import static com.armyof2.poll4bunk.MainActivity.l;
-import static com.armyof2.poll4bunk.MainActivity.m;
-import static com.armyof2.poll4bunk.MainActivity.posp;
-import static com.armyof2.poll4bunk.MainActivity.servTitle;
-import static com.armyof2.poll4bunk.MainActivity.totalpeeps;
+import static com.armyof2.poll4attend.MainActivity.i;
+import static com.armyof2.poll4attend.MainActivity.j;
+import static com.armyof2.poll4attend.MainActivity.k;
+import static com.armyof2.poll4attend.MainActivity.l;
+import static com.armyof2.poll4attend.MainActivity.m;
+import static com.armyof2.poll4attend.MainActivity.posp;
+import static com.armyof2.poll4attend.MainActivity.servTitle;
+import static com.armyof2.poll4attend.MainActivity.totalpeeps;
 
 
 public class PollingOverActivity extends AppCompatActivity{
