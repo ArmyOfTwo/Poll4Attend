@@ -50,7 +50,7 @@
         android:layout_marginBottom="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Would you like to attend the Lecture on:  "
+        android:text="Would you like to attend the Lecture dated on:  "
         android:textColor="@android:color/white"
         android:textSize="23sp" />
 
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/butt_sendop"
         android:layout_alignStart="@+id/butt_sendop"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="50dp"
         android:buttonTint="@color/PieChartGreen"
         android:text="Yes"
         android:textColor="@android:color/white"

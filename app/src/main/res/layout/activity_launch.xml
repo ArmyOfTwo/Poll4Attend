@@ -50,7 +50,7 @@
         android:layout_below="@+id/tv_title"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Bunk Title"
+        android:hint="Lecture Title"
         android:textColorHint="@color/colorHint"
         android:inputType="textPersonName" />
 

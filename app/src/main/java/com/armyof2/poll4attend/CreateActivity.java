@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -80,7 +82,9 @@ public class CreateActivity extends FragmentActivity {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
 
-
+        TextView Create_Title = (TextView) findViewById(R.id.tv_title);
+        Typeface Roboto_Thin = Typeface.createFromAsset(getAssets(),  "fonts/Roboto-Thin.ttf");
+        Create_Title.setTypeface(Roboto_Thin);
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
