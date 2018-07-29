@@ -48,21 +48,22 @@
         android:layout_above="@+id/rad_op2"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="40dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginRight="10dp"
         android:text="Would you like to attend the Lecture dated on:  "
         android:textColor="@android:color/white"
-        android:textSize="23sp" />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tv_quest"
-        android:layout_alignStart="@+id/tv_cdtimer"
+        android:layout_alignEnd="@+id/tv_quest"
+        android:layout_marginEnd="35dp"
         android:text="$date"
         android:textColor="@color/lightGreen"
-        android:textSize="23sp" />
+        android:textSize="24sp" />
 
 
     <RadioButton
