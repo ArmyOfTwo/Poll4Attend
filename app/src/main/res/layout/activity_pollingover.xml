@@ -22,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/piechart"
         android:layout_marginBottom="29dp"
-        android:text="Bunk Result:"
+        android:text="Poll Result:"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="30sp" />
