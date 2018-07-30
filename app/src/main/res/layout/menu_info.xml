@@ -10,7 +10,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="23dp"
-        android:text="Poll4Bunk v1.1"
+        android:text="Poll4Attendance v1.0"
         android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
@@ -37,7 +37,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="35dp"
-        android:text="Is used as a Polling System, particularly to commit Mass Bunks, may it be for University, School, etc. You can create your own Bunk Server, but one per user/account. The app also implements a Real-time Piechart for displaying live votes. Go-on try the app out, and don't forget to give us a feedback. Thank you."
+        android:text="This app is meant for teachers to use. The students can vote if they are going to attend the next lecture or not. This will give the professor a fair idea of the student strength for the next day and he can prepare material for them accordingly"
         android:textColor="@color/colorHint"
         android:textSize="16sp" />
 
@@ -69,11 +69,11 @@
         android:text="
 \n► Sign-in with your Google account
 \n► Tap on 'Proceed'
-\n► Tap on create server (if you want to be the admin)
+\n► Tap on create server (if you are the teacher)
 \n► Fill in the required details
 \n► Tap 'Create'
-\n► Now share your bunk title with your classmates
-\n► Enter your name and bunk title and tap 'Join'
+\n► Now share your lecture title with your students
+\n► Students can enter their name and lecture title and tap 'Join'
 \n► Choose your own vote
 \n► Tap 'Confirm' to send vote
 \n► Checkout the Pie-chart! (Tap it, Spin it etc.)

@@ -10,36 +10,12 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="14dp"
-        android:text="Release 1.1:"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView13"
-        android:layout_below="@+id/textView9"
-        android:layout_marginTop="25dp"
-        android:text="• Threads now dispose on activity exit
-\n• Device offline state handled
-\n• Back button fixes with activity disposal
-\n• Better text fields implemented
-\n• Set date now cannot be a past date"
-        android:textColor="@color/colorHint" />
-
-    <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView13"
         android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="25dp"
         android:text="• App created"
         android:textColor="@color/colorHint" />
@@ -48,37 +24,9 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView12"
-        android:layout_below="@+id/textView13"
         android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
         android:text="Alpha Release:"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView12"
-        android:layout_below="@+id/textView12"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
-        android:text="• Font scale now overrides font size settings
-\n• Display scale now overrides display size settings
-\n• Server with already existing name cannot be created now
-\n• Voting logic updated, vote reference changed
-\n• Minor display string fixes
-\n• Polling over activity's dialog box display fixed"
-        android:textColor="@color/colorHint" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView9"
-        android:layout_below="@+id/textView6"
-        android:layout_marginTop="60dp"
-        android:text="Release 1.0:"
         android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
