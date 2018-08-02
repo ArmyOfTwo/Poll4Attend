@@ -76,7 +76,7 @@
         android:layout_alignStart="@+id/tv_pollname"
         android:layout_below="@id/tv_name"
         android:layout_marginTop="65dp"
-        android:text="Enter Date of Lecture:"
+        android:text="Enter Poll Reset Time:"
         android:textColor="@android:color/white"
         android:textSize="19sp" />
 

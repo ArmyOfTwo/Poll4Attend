@@ -3,6 +3,7 @@ package com.armyof2.poll4attend;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
+import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -73,7 +76,7 @@ public class CreateActivity extends FragmentActivity {
         bunkDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDatePickerDialog(v);
+                showTimePickerDialog(v);
             }
         });
         bunkNum = (EditText) findViewById(R.id.et_numofparti);
@@ -122,36 +125,44 @@ public class CreateActivity extends FragmentActivity {
         };
     }
 
-    public void showDatePickerDialog(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "datePicker");
+    public void showTimePickerDialog(View v) {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
-    public static class DatePickerFragment extends DialogFragment implements
-            DatePickerDialog.OnDateSetListener {
+    public static class TimePickerFragment extends DialogFragment implements
+            TimePickerDialog.OnTimeSetListener {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             // Use the current date as the default date in the picker
             final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
 
             // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), R.style.datepicker, this, year, month, day);
+            return new TimePickerDialog(getActivity(), this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
         }
 
-        public void onDateSet(DatePicker view, int year, int month, int day) {
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             // Do something with the date chosen by the user
-            bunkDate.setText(day + "/" + (month + 1) + "/" + year);
+            bunkDate.setText(String.format("%02d:%02d", hourOfDay, minute));
             bunkNum.requestFocus();
         }
     }
 
     public void onCreateButtonClicked(View view) {
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, 1);
+        date = c.getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate= formatter.format(date);
+
         bunk.name = bunkName.getText().toString();
-        bunk.date = bunkDate.getText().toString();
+        bunk.date = strDate + " " + bunkDate.getText().toString() + ":00";
         bunk.num = bunkNum.getText().toString();
         bunk.admin = bunkAdmin.getText().toString();
 
@@ -167,7 +178,7 @@ public class CreateActivity extends FragmentActivity {
             return;
         }
         if(bunk.date.equals("")){
-            Toast.makeText(this, "You forgot to input date!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You forgot to input time!", Toast.LENGTH_SHORT).show();
             return;
         }
         if(bunk.num.equals("")){
@@ -179,7 +190,7 @@ public class CreateActivity extends FragmentActivity {
             return;
         }
 
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        /*SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Date d1 = Calendar.getInstance().getTime();
         Date d2;
         try {
@@ -194,7 +205,7 @@ public class CreateActivity extends FragmentActivity {
             Toast.makeText(this, "Date must be at least one day after", Toast.LENGTH_SHORT).show();
             badDate = false;
             return;
-        }
+        }*/
 
 
         dataMap = new HashMap<String, String>();

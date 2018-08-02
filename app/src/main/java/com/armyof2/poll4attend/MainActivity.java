@@ -1,5 +1,6 @@
 package com.armyof2.poll4attend;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -204,7 +205,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("TAG", "onChildAdded: " + bunkServerStuff);
                     startTimer();
                     if (bunkServerStuff.size() == 4) {
-                        dateView.setText(bunkServerStuff.get(0));
+                        String[] xD = bunkServerStuff.get(0).split(" ");
+                        dateView.setText(xD[0]);
                         //titleView.setText(bunkServerStuff.get(2));
                         totalpeeps = bunkServerStuff.get(1);
                         adminView.setText(bunkServerStuff.get(3));
@@ -649,7 +651,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void startTimer(){
         String endDate;
-        endDate = bunkServerStuff.get(0) + " 00:00:00";
+        endDate = bunkServerStuff.get(0);
         Date d1 = Calendar.getInstance().getTime();
         Date d2;
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -677,7 +679,7 @@ public class MainActivity extends AppCompatActivity {
 
             public void onFinish() {
                 cdtimerView.setText("Polling Over");
-                if((timeDiffInMilis + 86400000) >= 0)
+                if((timeDiffInMilis + 43200000) >= 0)
                     over();
                 else
                     destroy();
@@ -696,10 +698,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void destroy(){
         if(dest) {
-            myRef.removeValue();
-            Intent i = new Intent(this, LaunchActivity.class);
-            startActivity(i);
-            finish();
+            myRef.child("YuserUIDs").removeValue();
+            myRef.child("Bunker's Name").removeValue();
+            String endDate;
+            endDate = bunkServerStuff.get(0);
+            Date d2;
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            try {
+                d2 = format.parse(endDate);
+                Calendar c = Calendar.getInstance();
+                c.setTime(d2);
+                c.add(Calendar.DATE, 1);
+                d2 = c.getTime();
+                String strDate = format.format(d2);
+                myRef.child("Bunk Date").setValue(strDate);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            Toast.makeText(this, "Server reset!", Toast.LENGTH_SHORT).show();
+            recreate();
             dest = false;
         }
     }

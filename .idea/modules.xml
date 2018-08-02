@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Poll4Attend.iml" filepath="$PROJECT_DIR$/Poll4Attend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Poll4Attend.iml" filepath="$PROJECT_DIR$/Poll4Attend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../FEAR/Desktop/Poll4Attend/.idea/Poll4Attend.iml" filepath="$PROJECT_DIR$/../../../FEAR/Desktop/Poll4Attend/.idea/Poll4Attend.iml" />
+      <module fileurl="file://C:\Users\FEAR\Desktop\Poll4Attend\.idea\Poll4Attend.iml" filepath="C:\Users\FEAR\Desktop\Poll4Attend\.idea\Poll4Attend.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
