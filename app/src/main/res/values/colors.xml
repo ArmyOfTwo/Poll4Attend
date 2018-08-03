@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#373740</color>
     <color name="colorPrimaryDark">#27272f</color>
-    <color name="colorAccent">#1EB980</color>
+    <color name="colorAccent">#7491A1</color>
     <color name="colorHint">#a6a6b9</color>
 
     <color name="rallyGreen1">#37EFBA</color>
@@ -10,7 +10,7 @@
     <color name="rallyGreen3">#007D51</color>
     <color name="rallyGreen4">#005D57</color>
 
-    <color name="rallyGreen">#1EB980</color>
+    <color name="rallyGreen">#61a8ff</color>
     <color name="rallyDarkGreen">#045D56</color>
     <color name="rallyOrange">#FF6859</color>
     <color name="rallyYellow">#FFCF44</color>
