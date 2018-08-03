@@ -664,7 +664,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        final long timeDiffInMilis = TimeUnit.MILLISECONDS.toMillis(timeDifference);
+        final long timeDiffInMilis = TimeUnit.MILLISECONDS.toMillis(timeDifference) - 43200000;
 
         cdTimer = new CountDownTimer(timeDiffInMilis, 1000) { // adjust the milli seconds here
 
