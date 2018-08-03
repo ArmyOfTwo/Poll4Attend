@@ -44,7 +44,7 @@ public class PollingOverActivity extends AppCompatActivity{
     Description description;
     int timeInterval = 200;
     private String[] xData = {"Yes", "No", "Yes if 80%", "Not decided"};
-    private TextView bunkRes;
+    //private TextView bunkRes;
     private boolean stop = false;
 
     @Override
@@ -55,7 +55,7 @@ public class PollingOverActivity extends AppCompatActivity{
         setContentView(R.layout.activity_pollingover);
 
         pieChart = (PieChart) findViewById(R.id.piechart);
-        bunkRes = (TextView) findViewById(R.id.bunkres);
+       // bunkRes = (TextView) findViewById(R.id.bunkres);
         //RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) pieChart.getLayoutParams();
         //params.setMargins(getResources().getDimensionPixelSize(R.dimen.pie_left_margin), getResources().getDimensionPixelSize(R.dimen.pie_top_margin), getResources().getDimensionPixelSize(R.dimen.pie_right_margin), getResources().getDimensionPixelSize(R.dimen.pie_bot_margin));
         //pieChart.setLayoutParams(params);
@@ -120,7 +120,7 @@ public class PollingOverActivity extends AppCompatActivity{
 
             }
         });
-        //Bunk Result
+      /*  //Bunk Result
         android.util.Log.d("TAG1", "run: i = " + i + "  k = " + k);
         if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 90){
             bunkRes.setText("Huge Success");
@@ -146,7 +146,7 @@ public class PollingOverActivity extends AppCompatActivity{
         } else if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 0) {
             bunkRes.setText("Huge Failure");
             bunkRes.setTextColor(getResources().getColor(R.color.PieChartPink));
-        }
+        }*/
 
         setTitle(servTitle);
 
@@ -221,7 +221,7 @@ public class PollingOverActivity extends AppCompatActivity{
 
                             android.util.Log.d("TAG1", "run: i = " + i + "  m = " + totalpeeps);
                             //Bunk Result Update Realtime
-                            if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 90){
+                      /*      if(((float)Integer.parseInt(i)/Integer.parseInt(totalpeeps) * 100) >= 90){
                                 bunkRes.setText("Huge Success");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartGreen));
                                 android.util.Log.d("TAG1", "HS");
@@ -253,7 +253,7 @@ public class PollingOverActivity extends AppCompatActivity{
                                 bunkRes.setText("Huge Failure");
                                 bunkRes.setTextColor(getResources().getColor(R.color.PieChartPink));
                                 android.util.Log.d("TAG1", "HF");
-                            }
+                            }*/
                         }
                     });
                 } catch (InterruptedException e) {
