@@ -36,6 +36,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import com.armyof2.poll4attend.BuildConfig;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -52,7 +53,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private Animation out;
     private ProgressDialog progress;
     private Boolean exit = false;
-
+    int versionCode = BuildConfig.VERSION_CODE;
 
 
     @Override
@@ -244,6 +245,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         } else if (i == R.id.sign_out_button) {
             revokeAccess();
         } else if (i == R.id.proceed_button) {
+            if(versionCode != 1) {
+                Snackbar.make(findViewById(R.id.main_layout), "You are using outdated app, please update to proceed", Snackbar.LENGTH_LONG).show();
+                return;
+            }
             Intent intent = new Intent(this, LaunchActivity.class);
             startActivity(intent);
             finish();

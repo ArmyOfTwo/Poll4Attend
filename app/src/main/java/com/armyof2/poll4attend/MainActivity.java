@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean stop = false;
     private boolean connect = true;
     private boolean ov = true;
+    private long duration = 0;
     private boolean dest = true;
 
 
@@ -203,8 +204,8 @@ public class MainActivity extends AppCompatActivity {
                     String value = dataSnapshot.getValue(String.class);
                     bunkServerStuff.add(value);
                     Log.d("TAG", "onChildAdded: " + bunkServerStuff);
-                    startTimer();
-                    if (bunkServerStuff.size() == 4) {
+
+                    if (bunkServerStuff.size() == 5) {
                         String[] xD = bunkServerStuff.get(0).split(" ");
                         dateView.setText(xD[0]);
                         //titleView.setText(bunkServerStuff.get(2));
@@ -212,7 +213,9 @@ public class MainActivity extends AppCompatActivity {
                         adminView.setText(bunkServerStuff.get(3));
                         setTitle(bunkServerStuff.get(2));
                         servTitle = bunkServerStuff.get(2);
+                        startTimer();
                     }
+
                     bunkServerVotes.add(value);
                     if (dataSnapshot.getKey().equals("Bunk Wait")) {
                         if (value.equals("true"))
@@ -649,12 +652,24 @@ public class MainActivity extends AppCompatActivity {
         //addDataSet(pieChart, yData);
     }
 
+
     public void startTimer(){
         String endDate;
         endDate = bunkServerStuff.get(0);
         Date d1 = Calendar.getInstance().getTime();
         Date d2;
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+
+        SimpleDateFormat format2 = new SimpleDateFormat("hh:mm");
+
+        Date d3;
+        try {
+            d3 = format2.parse(bunkServerStuff.get(4));
+            duration = d3.getTime();
+            Log.d("TAG", "duration: " + duration);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         try {
             d2 = format.parse(endDate);
@@ -664,7 +679,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        final long timeDiffInMilis = TimeUnit.MILLISECONDS.toMillis(timeDifference) - 43200000;
+        final long timeDiffInMilis = TimeUnit.MILLISECONDS.toMillis(timeDifference);
 
         cdTimer = new CountDownTimer(timeDiffInMilis, 1000) { // adjust the milli seconds here
 
@@ -679,7 +694,7 @@ public class MainActivity extends AppCompatActivity {
 
             public void onFinish() {
                 cdtimerView.setText("Polling Over");
-                if((timeDiffInMilis + 43200000) >= 0)
+                if((timeDiffInMilis + duration) >= 0)
                     over();
                 else
                     destroy();

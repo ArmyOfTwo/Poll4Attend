@@ -43,6 +43,7 @@ import static com.armyof2.poll4attend.SignInActivity.userUid;
 public class CreateActivity extends FragmentActivity {
 
     static EditText bunkDate;
+    static EditText bunkReset;
     private EditText bunkName;
     static EditText bunkNum;
     private EditText bunkAdmin;
@@ -53,12 +54,14 @@ public class CreateActivity extends FragmentActivity {
     private boolean serverExists = false;
     private ArrayList<String> bunkTitle;
     private boolean badDate = false;
+    static boolean bd = false, br = false;
 
     private class BunkServer {
         String name;
         String date;
         String num;
         String admin;
+        String reset;
     }
 
     BunkServer bunk;
@@ -73,12 +76,24 @@ public class CreateActivity extends FragmentActivity {
         bunkName = (EditText) findViewById(R.id.et_pollname);
         bunkAdmin = (EditText) findViewById(R.id.et_name);
         bunkDate = (EditText) findViewById(R.id.et_date);
+        bunkReset = (EditText) findViewById(R.id.et_pollreset);
+
         bunkDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bd = true;
                 showTimePickerDialog(v);
             }
         });
+
+        bunkReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                br = true;
+                showTimePickerDialog(v);
+            }
+        });
+
         bunkNum = (EditText) findViewById(R.id.et_numofparti);
         bunk = new BunkServer();
         bunkTitle = new ArrayList<>();
@@ -147,7 +162,14 @@ public class CreateActivity extends FragmentActivity {
 
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             // Do something with the date chosen by the user
-            bunkDate.setText(String.format("%02d:%02d", hourOfDay, minute));
+            if(bd) {
+                bunkDate.setText(String.format("%02d:%02d", hourOfDay, minute));
+                bd = false;
+            }
+            if(br) {
+                bunkReset.setText(String.format("%02d:%02d", hourOfDay, minute));
+                br = false;
+            }
             bunkNum.requestFocus();
         }
     }
@@ -165,6 +187,7 @@ public class CreateActivity extends FragmentActivity {
         bunk.date = strDate + " " + bunkDate.getText().toString() + ":00";
         bunk.num = bunkNum.getText().toString();
         bunk.admin = bunkAdmin.getText().toString();
+        bunk.reset = bunkReset.getText().toString();
 
         if(bunk.name.equals("")){
             Toast.makeText(this, "You forgot to input title!", Toast.LENGTH_SHORT).show();
@@ -178,7 +201,11 @@ public class CreateActivity extends FragmentActivity {
             return;
         }
         if(bunk.date.equals("")){
-            Toast.makeText(this, "You forgot to input time!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "You forgot to input over time!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(bunk.reset.equals("")){
+            Toast.makeText(this, "You forgot to input reset time!", Toast.LENGTH_SHORT).show();
             return;
         }
         if(bunk.num.equals("")){
@@ -190,22 +217,23 @@ public class CreateActivity extends FragmentActivity {
             return;
         }
 
-        /*SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Date d1 = Calendar.getInstance().getTime();
-        Date d2;
+        SimpleDateFormat format = new SimpleDateFormat("hh:mm");
+        Date d1, d2;
         try {
-            d2 = format.parse(bunk.date);
-            if(d1.getTime() >= d2.getTime())
+            d1 = format.parse(bunkDate.getText().toString());
+            d2 = format.parse(bunkReset.getText().toString());
+            Log.d("TAG", "bnkdte: " + d1.getTime() + "    bnkreset: " + d2.getTime());
+            if(d1.getTime() + 1800000 >= d2.getTime())
                 badDate = true;
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         if(badDate) {
-            Toast.makeText(this, "Date must be at least one day after", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Reset time must be at least 30 min after", Toast.LENGTH_LONG).show();
             badDate = false;
             return;
-        }*/
+        }
 
 
         dataMap = new HashMap<String, String>();
@@ -213,6 +241,7 @@ public class CreateActivity extends FragmentActivity {
         dataMap.put("Bunk Date", bunk.date);
         dataMap.put("Bunk Participants", bunk.num);
         dataMap.put("Bunker Admin", bunk.admin);
+        dataMap.put("Bunker Reset", bunk.reset);
         dataMap.put("Yes", "0");
         dataMap.put("No", "0");
         dataMap.put("Yes80", "0");

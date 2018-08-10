@@ -6,6 +6,32 @@
     android:focusableInTouchMode="true">
 
     <EditText
+        android:id="@+id/et_pollreset"
+        android:focusable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_numofparti2"
+        android:layout_alignBottom="@+id/tv_numofparti2"
+        android:layout_alignEnd="@+id/et_pollname"
+        android:layout_alignStart="@+id/et_pollname"
+        android:backgroundTint="@drawable/focus_text_tint"
+        android:digits="0123456789"
+        android:ems="10"
+        android:imeOptions="actionDone"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+id/tv_numofparti2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_date"
+        android:layout_below="@+id/et_date"
+        android:layout_marginTop="60dp"
+        android:text="Enter Poll Reset Time:"
+        android:textColor="@android:color/white"
+        android:textSize="19sp" />
+
+    <EditText
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,8 +74,9 @@
         android:id="@+id/tv_numofparti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tv_date"
-        android:layout_below="@+id/et_date"
+        android:layout_alignParentBottom="false"
+        android:layout_alignStart="@+id/tv_numofparti2"
+        android:layout_below="@+id/et_pollreset"
         android:layout_marginTop="60dp"
         android:text="Enter Number of Students:"
         android:textColor="@android:color/white"
@@ -76,7 +103,7 @@
         android:layout_alignStart="@+id/tv_pollname"
         android:layout_below="@id/tv_name"
         android:layout_marginTop="65dp"
-        android:text="Enter Poll Reset Time:"
+        android:text="Enter Polling Over Time:"
         android:textColor="@android:color/white"
         android:textSize="19sp" />
 
